@@ -41,6 +41,17 @@ class PenginapanController extends Controller
 
         
     }
+    
+     public function search(Request $request)
+    {
+        $searchQuery = $request->input('search');
+
+        
+        $records = Penginapan::where('namaKos', 'like', '%' . $searchQuery . '%')->get();
+
+  
+        return view('kos', compact('records', 'searchQuery'));
+    }
 
     public function getAllKos(Request $request)
     {

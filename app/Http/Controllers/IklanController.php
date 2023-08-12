@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Storage;
 use App\Models\Iklan;
 use App\Http\Requests\IklanRequest;
 use Illuminate\Http\Request;
@@ -27,14 +26,14 @@ class IklanController extends Controller
 
         $data['paging'] = new PaginationResource($iklan);
         $data['records'] = $iklan->items();
-
+        
         if ($request->wantsJson()) {
         return $this->success($data, 'get records data success');
     }
 
         return view('iklan', $data);
 
-
+       
     }
 
     /**

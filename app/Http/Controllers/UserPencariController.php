@@ -55,6 +55,17 @@ class UserPencariController extends Controller
 
         return $this->success($userPencari, 'get profile data success');
     }
+    
+     public function search(Request $request)
+    {
+        $searchQuery = $request->input('search');
+
+        
+        $records = UserPencari::where('nama', 'like', '%' . $searchQuery . '%')->get();
+
+  
+        return view('pencari', compact('records', 'searchQuery'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -145,10 +156,7 @@ class UserPencariController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.
@@ -157,10 +165,18 @@ class UserPencariController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    
+    public function edit($id)
+    {
+        $userpencari = UserPencari::findOrFail($id);
+        return view('edit_pencari', compact('userpencari'));
+    }
+    
     public function update(UserPencariRequest $request, $id)
     {
-
         $userpencari = UserPencari::findOrFail($id);
+    
         // Handle image upload
         if ($request->hasFile('profilGambar')) {
             $image = $request->file('profilGambar');
@@ -168,15 +184,22 @@ class UserPencariController extends Controller
             $path = $image->storeAs('public/images', $filename);
             $userpencari->profilGambar = $filename;
         }
+    
+        // Only update password if a new one is provided
+        if ($request->has('password')) {
+            $userpencari->password = Hash::make($request->password);
+        }
+    
         $userpencari->email = $request->email;
-        $userpencari->password = Hash::make($request->password);
         $userpencari->nama = $request->nama;
         $userpencari->nomorHp = $request->nomorHp;
         $userpencari->email_verified_at = $request->email_verified_at;
         $userpencari->role = 'pencari';
         $userpencari->save();
-        return $this->success($userpencari, 'update data success');
+    
+        return redirect('/userpencari')->with('success', 'Update data success');
     }
+
 
     /**
      * Remove the specified resource from storage.

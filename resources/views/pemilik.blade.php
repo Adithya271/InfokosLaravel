@@ -4,6 +4,12 @@
 
 <div class="container">
     <h1 class="mb-4">Manage Pemilik Kos</h1>
+    <form action="{{ route('searchpemilik') }}" method="GET">
+        <div class="form-group">
+            <input type="text" name="search" class="form-control" placeholder="Search by Nama">
+            <button type="submit" class="btn btn-primary mt-2">Search</button>
+        </div>
+    </form>
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead class="thead-dark">
@@ -25,6 +31,7 @@
                     <td>{{ $pemilik->email }}</td>
                     <td>{{ $pemilik->nomorHp }}</td>
                     <td>
+                        <a href="{{ url('/userpemilik/' . $pemilik->id . '/edit') }}" class="btn btn-primary btn-sm">Edit</a>
                         <form action="{{ url('/userpemilik', ['id' => $pemilik->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')

@@ -3,7 +3,13 @@
 @section('content')
 
 <div class="container">
-    <h1 class="mb-4">Manage Pencari Kos</h1>
+   <h1 class="mb-4">Manage Pencari Kos</h1>
+    <form action="{{ route('searchpencari') }}" method="GET">
+        <div class="form-group">
+            <input type="text" name="search" class="form-control" placeholder="Search by Nama">
+            <button type="submit" class="btn btn-primary mt-2">Search</button>
+        </div>
+    </form>
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead class="thead-dark">
@@ -25,6 +31,7 @@
                     <td>{{ $pencari->email }}</td>
                     <td>{{ $pencari->nomorHp }}</td>
                     <td>
+                        <a href="{{ url('/userpencari/' . $pencari->id . '/edit') }}" class="btn btn-primary btn-sm">Edit</a>
                         <form action="{{ url('/userpencari', ['id' => $pencari->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')

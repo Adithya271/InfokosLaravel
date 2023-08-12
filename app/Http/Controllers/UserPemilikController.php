@@ -28,11 +28,11 @@ class UserPemilikController extends Controller
 
         $data['paging'] = new PaginationResource($userPemilik);
         $data['records'] = $userPemilik->items();
-        
+
         if ($request->wantsJson()) {
         return $this->success($data, 'get records data success');
     }
-       
+
 
         return view('pemilik', $data);
 
@@ -75,13 +75,23 @@ class UserPemilikController extends Controller
 
         $userPemilik->nama = $request->input('nama');
         $userPemilik->nomorHp = $request->input('nomorHp');
-        $userPemilik->profilGambar = $request->input('profilGambar');
+       
 
         $userPemilik->save();
 
         return $this->success($userPemilik, 'update data success');
     }
 
+   public function search(Request $request)
+    {
+        $searchQuery = $request->input('search');
+
+        
+        $records = UserPemilik::where('nama', 'like', '%' . $searchQuery . '%')->get();
+
+  
+        return view('pemilik', compact('records', 'searchQuery'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -137,9 +147,11 @@ class UserPemilikController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function edit($id)
     {
-        //
+        $userpemilik = UserPemilik::findOrFail($id);
+        return view('edit_pemilik', compact('userpemilik'));
     }
 
     /**
@@ -167,7 +179,7 @@ class UserPemilikController extends Controller
         $userPemilik->role = 'pemilik';
         $userPemilik->save();
 
-        return $this->success($userPemilik, 'update data success');
+         return redirect('/userpemilik')->with('success', 'Update data success');
     }
 
     /**
