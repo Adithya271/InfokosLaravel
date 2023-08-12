@@ -30,7 +30,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Gambr</th>
+                    <th scope="col">Gambar</th>
                     <th scope="col">Aksi</th>
                 </tr>
             </thead>
