@@ -28,7 +28,7 @@
                 @foreach($records as $penginapan)
                 <tr>
                     <td>
-                        <img src="{{ asset('storage/images/' . $penginapan->gambarKos) }}" alt="Gambar Kos" width="50" height="50">
+                        <img src="{{ asset('api/images/' . $penginapan->gambarKos) }}" alt="Gambar Kos" width="50" height="50">
                     </td>
                     <td>{{ $penginapan->namaKos }}</td>
                     <td>{{ $penginapan->alamat }}</td>

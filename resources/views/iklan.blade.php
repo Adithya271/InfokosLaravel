@@ -39,7 +39,7 @@
                 <tr>
                     <td>{{ $iklan->id }}</td>
                    <td>
-                    <img src="{{ asset('storage/images/' . $iklan->gambar) }}" alt="Gambar Iklan" width="50" height="50">
+                    <img src="{{ asset('api/images/' . $iklan->gambar) }}" alt="Gambar Iklan" width="50" height="50">
                     </td>
                     <td>
                         <form action="{{ url('/iklan', ['id' => $iklan->id]) }}" method="POST">

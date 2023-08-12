@@ -11,7 +11,7 @@
             <label for="profilGambar">Foto Profil</label>
             <input type="file" class="form-control" id="profilGambar" name="profilGambar">
             @if($userpencari->profilGambar)
-                <img src="{{ asset('storage/images/' . $userpencari->profilGambar) }}" alt="Foto Profil" width="50" height="50">
+                <img src="{{ asset('api/images/' . $userpencari->profilGambar) }}" alt="Foto Profil" width="50" height="50">
             @endif
         </div>
         <div class="form-group">

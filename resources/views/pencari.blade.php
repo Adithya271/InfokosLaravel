@@ -25,7 +25,7 @@
                 @foreach($records as $pencari)
                 <tr>
                     <td>
-                        <img src="{{ asset('storage/images/' . $pencari->profilGambar) }}" alt="Foto Profil" width="50" height="50">
+                        <img src="{{ asset('api/images/' . $pencari->profilGambar) }}" alt="Foto Profil" width="50" height="50">
                     </td>
                     <td>{{ $pencari->nama }}</td>
                     <td>{{ $pencari->email }}</td>
