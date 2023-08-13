@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Jeniskos extends Model
+class Rekening extends Model
 {
     use HasFactory;
-    protected $fillable = ['jenis'];
+    protected $fillable = [
+        'pemilikId', 'namaBank', 'noRek', 'atasNama'
+    ];
     protected $guarded = [];
 }

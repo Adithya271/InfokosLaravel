@@ -32,24 +32,24 @@ class PenginapanController extends Controller
 
         $data['paging'] = new PaginationResource($penginapan);
         $data['records'] = $penginapan->items();
-        
+
         if ($request->wantsJson()) {
         return $this->success($data, 'get records data success');
     }
 
         return view('kos', $data);
 
-        
+
     }
-    
+
      public function search(Request $request)
     {
         $searchQuery = $request->input('search');
 
-        
+
         $records = Penginapan::where('namaKos', 'like', '%' . $searchQuery . '%')->get();
 
-  
+
         return view('kos', compact('records', 'searchQuery'));
     }
 
@@ -230,7 +230,7 @@ class PenginapanController extends Controller
             $penginapan->gambarKos = str_replace('"', '', $filename);
         }
 
-        // Rest of the code to save Penginapan data
+        //  code untuk save Penginapan data
         $penginapan->namaKos = $request->namaKos;
         $penginapan->alamat = $request->alamat;
         $penginapan->cerita = $request->cerita;
