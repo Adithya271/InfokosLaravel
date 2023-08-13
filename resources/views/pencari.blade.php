@@ -11,7 +11,7 @@
         </div>
     </form>
     <div class="mb-3">
-        <a href="{{ route('userpencari.store') }}" class="btn btn-success">Tambah Data</a>
+        <a href="{{ route('pencari.store') }}" class="btn btn-success">Tambah Data</a>
     </div>
     <div class="table-responsive">
         <table class="table table-bordered">
