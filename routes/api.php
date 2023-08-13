@@ -12,6 +12,9 @@ use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\UserPemilikController;
 use App\Http\Controllers\UserPencariController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\RekeningController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,10 +67,14 @@ Route::middleware('auth:sanctum')->group(function () {
 
     });
 });
+
+Route::get('/useradmin', [UserAdminController::class, 'index']);
+
 Route::put('/penginapan/{id}', [PenginapanController::class, 'update']);
 Route::delete('/penginapan/{id}', [PenginapanController::class, 'destroy']);
-
 Route::post('/penginapan', [PenginapanController::class, 'store']);
+
+Route::get('/userpemilik', [UserPemilikController::class, 'index']);
 Route::post('/userpemilik', [UserPemilikController::class, 'store']);
 Route::put('/userpemilik/{id}', [UserPemilikController::class, 'update']);
 Route::post('/userpemilik', [UserPemilikController::class, 'store']);
@@ -90,11 +97,6 @@ Route::get('/carikos', [PenginapanController::class, 'cariKos']);
 Route::get('/belumpublish', [PenginapanController::class, 'belumPublish']);
 Route::get('/sudahpublish', [PenginapanController::class, 'sudahPublish']);
 
-Route::get('/useradmin', [UserAdminController::class, 'index']);
-
-Route::get('/userpemilik', [UserPemilikController::class, 'index']);
-
-
 Route::get('/userpencari', [UserPencariController::class, 'index']);
 Route::get('/getprofile', [UserPencariController::class, 'getProfile']);
 Route::put('/updateprofilepencari/{id}', [UserPencariController::class, 'updateProfilePencari']);
@@ -116,4 +118,20 @@ Route::get('/images/{filename}', function ($filename) {
     $response = response($file, 200)->header('Content-Type', $type);
     return $response;
 });
+
 Route::post('uploadimage', [ImageController::class, 'uploadImage']);
+
+Route::get('/lokasi', [LokasiController::class, 'index']);
+Route::post('/lokasi', [LokasiController::class, 'store']);
+Route::put('/lokasi/{id}', [LokasiController::class, 'update']);
+Route::delete('/lokasi/{id}', [LokasiController::class, 'destroy']);
+
+Route::get('/transaksi', [TransaksiController::class, 'index']);
+Route::post('/transaksi', [TransaksiController::class, 'store']);
+Route::put('/transaksi/{id}', [TransaksiController::class, 'update']);
+Route::delete('/transaksi/{id}', [TransaksiController::class, 'destroy']);
+
+Route::get('/rekening', [RekeningController::class, 'index']);
+Route::post('/rekening', [RekeningController::class, 'store']);
+Route::put('/rekening/{id}', [RekeningController::class, 'update']);
+Route::delete('/rekening/{id}', [RekeningController::class, 'destroy']);
