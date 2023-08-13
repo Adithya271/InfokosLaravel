@@ -12,14 +12,14 @@ class RekeningController extends Controller
     public function index(Request $request)
     {
         $limit = $request->limit;
-        $pemilikId = $request->pemilikId;
+        $id = $request->id;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
 
         $rekening = Rekening::with('user_pemiliks')
-            ->where(function ($f) use ($pemilikId) {
-                if ($pemilikId && $pemilikId != '' && $pemilikId != 'null') {
-                    $f->where('pemilikId', 'LIKE', '%' . $pemilikId . '%');
+            ->where(function ($f) use ($id) {
+                if ($id && $id != '' && $id != 'null') {
+                    $f->where('id', 'LIKE', '%' . $id . '%');
                 }
             })
             ->orderBy($orderCol, $orderType)

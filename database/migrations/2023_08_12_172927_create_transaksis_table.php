@@ -30,9 +30,7 @@ return new class extends Migration
             $table->string('statusTransaksi');
             $table->timestamps();
 
-            $table->foreign('pencariId')->references('id')->on('user_pencaris')->onDelete('cascade');
-            $table->foreign('kosId')->references('id')->on('penginapans')->onDelete('cascade');
-            $table->foreign('pemilikId')->references('id')->on('penginapans')->onDelete('cascade');
+         
         });
     }
 

@@ -25,7 +25,7 @@ class TransaksiRequest extends FormRequest
     {
         return [
             'pencariId' => 'integer|required',
-            'noTranskasi' => 'string|required|min:3',
+            'noTranskasi' => 'string|required',
             'tglTransaksi' => 'date|required',
             'namaPencari' => 'string|required|min:3',
             'kosId' => 'integer|required',

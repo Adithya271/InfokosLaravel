@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('atasNama');
             $table->timestamps();
 
-            $table->foreign('pemilikId')->references('id')->on('user_pemiliks')->onDelete('cascade');
+          
         });
     }
 

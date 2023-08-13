@@ -12,14 +12,14 @@ class TransaksiController extends Controller
     public function index(Request $request)
     {
         $limit = $request->limit;
-        $pemilikId = $request->pemilikId;
+        $id = $request->id;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
 
-        $transaksi = Transaksi::with('user_pemiliks')
-            ->where(function ($f) use ($pemilikId) {
-                if ($pemilikId && $pemilikId != '' && $pemilikId != 'null') {
-                    $f->where('pemilikId', 'LIKE', '%' . $pemilikId . '%');
+        $transaksi = Transaksi::with(['user_pencaris', 'user_pemiliks', 'penginapans'])
+            ->where(function ($f) use ($id) {
+                if ($id && $id != '' && $id != 'null') {
+                    $f->where('id', 'LIKE', '%' . $id . '%');
                 }
             })
             ->orderBy($orderCol, $orderType)
@@ -50,9 +50,18 @@ class TransaksiController extends Controller
     public function store(TransaksiRequest $request)
     {
         $transaksi = new Transaksi();
+        $transaksi->pencariId = $request->pencariId;
+        $transaksi->noTransaksi = $request->noTransaksi;
+        $transaksi->tglTransaksi = $request->tglTransaksi;
+        $transaksi->namaPencari = $request->namaPencari;
+        $transaksi->kosId = $request->kosId;
         $transaksi->pemilikId = $request->pemilikId;
-        $transaksi->pemilikId = $request->pemilikId;
-        $transaksi->pemilikId = $request->pemilikId;
+        $transaksi->catatanPesanan = $request->catatanPesanan;
+        $transaksi->totalBayar = $request->totalBayar;
+        $transaksi->atasNama = $request->atasNama;
+        $transaksi->namaBank = $request->namaBank;
+        $transaksi->noRek = $request->noRek;
+        $transaksi->statusTransaksi = $request->statusTransaksi;
         $transaksi->save();
         return $this->success($transaksi, 'save data success');
     }

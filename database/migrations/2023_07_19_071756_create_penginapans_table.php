@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('spektipekamar');
             $table->string('tipe');
 
-            $table->foreign('pemilikId')->references('id')->on('user_pemiliks')->onDelete('cascade');
+         
         });
     }
 
