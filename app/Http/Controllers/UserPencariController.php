@@ -31,15 +31,15 @@ class UserPencariController extends Controller
 
         $data['paging'] = new PaginationResource($userpencari);
         $data['records'] = $userpencari->items();
-        
+
         if ($request->wantsJson()) {
         return $this->success($data, 'get records data success');
     }
 
         return view('pencari', $data);
 
-       
-    
+
+
     }
 
     public function getProfile(Request $request)
@@ -55,15 +55,15 @@ class UserPencariController extends Controller
 
         return $this->success($userPencari, 'get profile data success');
     }
-    
+
      public function search(Request $request)
     {
         $searchQuery = $request->input('search');
 
-        
+
         $records = UserPencari::where('nama', 'like', '%' . $searchQuery . '%')->get();
 
-  
+
         return view('pencari', compact('records', 'searchQuery'));
     }
 
@@ -74,7 +74,7 @@ class UserPencariController extends Controller
      */
     public function create()
     {
-        //
+        return view('tambah_pencari');
     }
 
     /**
@@ -156,7 +156,7 @@ class UserPencariController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
 
     /**
      * Update the specified resource in storage.
@@ -166,17 +166,17 @@ class UserPencariController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    
+
     public function edit($id)
     {
         $userpencari = UserPencari::findOrFail($id);
         return view('edit_pencari', compact('userpencari'));
     }
-    
+
     public function update(UserPencariRequest $request, $id)
     {
         $userpencari = UserPencari::findOrFail($id);
-    
+
         // Handle image upload
         if ($request->hasFile('profilGambar')) {
             $image = $request->file('profilGambar');
@@ -184,19 +184,19 @@ class UserPencariController extends Controller
             $path = $image->storeAs('public/images', $filename);
             $userpencari->profilGambar = $filename;
         }
-    
+
         // Only update password if a new one is provided
         if ($request->has('password')) {
             $userpencari->password = Hash::make($request->password);
         }
-    
+
         $userpencari->email = $request->email;
         $userpencari->nama = $request->nama;
         $userpencari->nomorHp = $request->nomorHp;
         $userpencari->email_verified_at = $request->email_verified_at;
         $userpencari->role = 'pencari';
         $userpencari->save();
-    
+
         return redirect('/userpencari')->with('success', 'Update data success');
     }
 
