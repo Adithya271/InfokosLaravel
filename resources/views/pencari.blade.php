@@ -10,6 +10,9 @@
             <button type="submit" class="btn btn-primary mt-2">Search</button>
         </div>
     </form>
+    <div class="mb-3">
+        <a href="{{ route('userpencari.store') }}" class="btn btn-success">Tambah Data</a>
+    </div>
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead class="thead-dark">

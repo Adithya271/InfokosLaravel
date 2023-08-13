@@ -45,20 +45,21 @@ Route::group(['middleware' => 'useradmin'], function () {
 
     Route::delete('/userpencari/{id}', [UserPencariController::class, 'destroy'])->name('pencari.destroy');
     Route::get('/userpencari', [UserPencariController::class, 'index'])->name('pencari.index');
+    Route::post('/userpencari', [UserPencariController::class, 'store'])->name('pencari.store');
     Route::get('/userpencari/{id}/edit', [UserPencariController::class, 'edit'])->name('pencari.edit');
     Route::put('/userpencari/{id}', [UserPencariController::class, 'update'])->name('pencari.update');
     Route::get('/searchpencari', [UserPencariController::class, 'search'])->name('searchpencari');
-    
+
     Route::delete('/penginapan/{id}', [PenginapanController::class, 'destroy'])->name('penginapan.destroy');
     Route::get('/penginapan', [PenginapanController::class, 'index'])->name('penginapan.index');
     Route::post('/penginapan/setuju/{id}', [PenginapanController::class, 'setuju'])->name('penginapan.setuju');
     Route::post('/penginapan/tolak/{id}', [PenginapanController::class, 'tolak'])->name('penginapan.tolak');
     Route::get('/searchpenginapan', [PenginapanController::class, 'search'])->name('searchpenginapan');
-    
+
     Route::delete('/iklan/{id}', [IklanController::class, 'destroy'])->name('iklan.destroy');
     Route::get('/iklan', [IklanController::class, 'index'])->name('iklan.index');
     Route::post('/iklan', [IklanController::class, 'store'])->name('iklan.store');
-    
+
     Route::get('/logout', [AuthController::class, 'logoutadmin'])->name('logout');
 
 
