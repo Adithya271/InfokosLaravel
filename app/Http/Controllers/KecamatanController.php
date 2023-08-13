@@ -12,11 +12,11 @@ class KecamatanController extends Controller
     public function index(Request $request)
     {
         $limit = $request->limit;
-        $namaKecamatan = $request->jenis;
+        $namaKecamatan = $request->namaKecamatan;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
 
-        // Fetch the kecamatan data with the related "penginapan" data using the relationship
+      
         $kecamatan = Kecamatan::with('penginapans')
             ->where(function ($f) use ($namaKecamatan) {
                 if ($namaKecamatan && $namaKecamatan != '' && $namaKecamatan != 'null') {

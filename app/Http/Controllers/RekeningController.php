@@ -16,13 +16,14 @@ class RekeningController extends Controller
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
 
-        $rekening = Rekening::where(function ($f) use ($pemilikId) {
-            if ($pemilikId && $pemilikId != '' && $pemilikId != 'null') {
-                $f->where('pemilikId', 'LIKE', '%' . $pemilikId . '%');
-            }
-        })
-
-            ->orderBy($orderCol, $orderType)->paginate($limit);
+        $rekening = Rekening::with('user_pemiliks')
+            ->where(function ($f) use ($pemilikId) {
+                if ($pemilikId && $pemilikId != '' && $pemilikId != 'null') {
+                    $f->where('pemilikId', 'LIKE', '%' . $pemilikId . '%');
+                }
+            })
+            ->orderBy($orderCol, $orderType)
+            ->paginate($limit);
 
         $data['paging'] = new PaginationResource($rekening);
         $data['records'] = $rekening->items();
@@ -49,10 +50,10 @@ class RekeningController extends Controller
     public function store(RekeningRequest $request)
     {
         $rekening = new Rekening();
-        $rekening->email = $request->email;
-        $rekening->password = Hash::make($request->password);
-        $rekening->email_verified_at = $request->email_verified_at;
-        $rekening->role = 'admin';
+        $rekening->pemilikId = $request->pemilikId;
+        $rekening->namaBank = $request->namaBank;
+        $rekening->noRek = $request->noRek;
+        $rekening->atasNama = $request->atasNama;
         $rekening->save();
         return $this->success($rekening, 'save data success');
     }
@@ -91,10 +92,10 @@ class RekeningController extends Controller
     {
 
         $rekening = Rekening::findOrFail($id);
-        $rekening->email = $request->email;
-        $rekening->password = Hash::make($request->password);
-        $rekening->email_verified_at = $request->email_verified_at;
-        $rekening->role = 'admin';
+        $rekening->pemilikId = $request->pemilikId;
+        $rekening->namaBank = $request->namaBank;
+        $rekening->noRek = $request->noRek;
+        $rekening->atasNama = $request->atasNama;
         $rekening->save();
         return $this->success($rekening, 'update data success');
     }
