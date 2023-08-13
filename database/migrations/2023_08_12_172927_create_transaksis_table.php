@@ -15,20 +15,20 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->integer('pencariId');
+            $table->string('pencariId');
             $table->string('noTransaksi');
             $table->date('tglTransaksi');
             $table->string('namaPencari');
-            $table->integer('kosId');
+            $table->string('kosId');
             $table->string('jlhKamar');
-            $table->integer('pemilikId');
+            $table->string('pemilikId');
             $table->string('catatanPesanan');
-            $table->integer('totalBayar');
+            $table->string('totalBayar');
             $table->text('buktiBayar');
             $table->string('atasNama');
             $table->string('namaBank');
             $table->string('noRek');
-            $table->integer('statusTransaksi');
+            $table->string('statusTransaksi');
             $table->timestamps();
 
 
