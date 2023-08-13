@@ -26,10 +26,11 @@
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password">
         </div>
-        <div class="form-group">
-            <label for="email_verified_at">Email Verified At</label>
-            <input type="text" class="form-control" id="email_verified_at" name="email_verified_at" value="{{ old('email_verified_at') }}">
-        </div>
+       <div class="form-group">
+        <label for="email_verified_at">Email Verified At</label>
+        <input type="text" class="form-control" id="email_verified_at" name="email_verified_at" value="{{ old('email_verified_at') }}" data-input>
+         </div>
+
         <button type="submit" class="btn btn-primary">Tambah</button>
     </form>
 </div>
