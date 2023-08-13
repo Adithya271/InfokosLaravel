@@ -50,6 +50,13 @@ class TransaksiController extends Controller
     public function store(TransaksiRequest $request)
     {
         $transaksi = new Transaksi();
+        // Handle image upload
+        if ($request->hasFile('buktiBayar')) {
+            $image = $request->file('buktiBayar');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/images', $filename);
+            $transaksi->profilGambar = $filename;
+        }
         $transaksi->pencariId = $request->pencariId;
         $transaksi->noTransaksi = $request->noTransaksi;
         $transaksi->tglTransaksi = $request->tglTransaksi;
