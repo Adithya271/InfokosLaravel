@@ -2,31 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaksi;
-use App\Http\Requests\TransaksiRequest;
+use App\Models\Lokasi;
+use App\Http\Requests\LokasiRequest;
 use Illuminate\Http\Request;
 use App\Http\Resources\PaginationResource;
 
-class TransaksiController extends Controller
+class LokasiController extends Controller
 {
     public function index(Request $request)
     {
         $limit = $request->limit;
-        $pemilikId = $request->pemilikId;
+        $titik = $request->titik;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
 
-        $transaksi = Transaksi::with('user_pemiliks')
-            ->where(function ($f) use ($pemilikId) {
-                if ($pemilikId && $pemilikId != '' && $pemilikId != 'null') {
-                    $f->where('pemilikId', 'LIKE', '%' . $pemilikId . '%');
-                }
-            })
-            ->orderBy($orderCol, $orderType)
-            ->paginate($limit);
+        $lokasi = Lokasi::where(function ($f) use ($titik) {
+            if ($titik && $titik != '' && $titik != 'null') {
+                $f->where('titik', 'LIKE', '%' . $titik . '%');
+            }
+        })
 
-        $data['paging'] = new PaginationResource($transaksi);
-        $data['records'] = $transaksi->items();
+            ->orderBy($orderCol, $orderType)->paginate($limit);
+
+        $data['paging'] = new PaginationResource($lokasi);
+        $data['records'] = $lokasi->items();
 
         return $this->success($data, 'get records data success');
     }
@@ -47,14 +46,12 @@ class TransaksiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TransaksiRequest $request)
+    public function store(LokasiRequest $request)
     {
-        $transaksi = new Transaksi();
-        $transaksi->pemilikId = $request->pemilikId;
-        $transaksi->pemilikId = $request->pemilikId;
-        $transaksi->pemilikId = $request->pemilikId;
-        $transaksi->save();
-        return $this->success($transaksi, 'save data success');
+        $lokasi = new Lokasi();
+        $lokasi->titik = $request->titik;
+        $lokasi->save();
+        return $this->success($lokasi, 'save data success');
     }
 
     /**
@@ -65,8 +62,8 @@ class TransaksiController extends Controller
      */
     public function show($id)
     {
-        $transaksi = Transaksi::findOrFail($id);
-        return $this->success($transaksi, 'get record success');
+        $lokasi = Lokasi::findOrFail($id);
+        return $this->success($lokasi, 'get record success');
     }
 
     /**
@@ -87,13 +84,14 @@ class TransaksiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TransaksiRequest $request, $id)
+    public function update(LokasiRequest $request, $id)
     {
 
-        $transaksi = Transaksi::findOrFail($id);
-        $transaksi->pemilikId = $request->pemilikId;
-        $transaksi->save();
-        return $this->success($transaksi, 'update data success');
+        $lokasi = Lokasi::findOrFail($id);
+        $lokasi->titik = $request->titik;
+
+        $lokasi->save();
+        return $this->success($lokasi, 'update data success');
     }
 
     /**
@@ -104,7 +102,7 @@ class TransaksiController extends Controller
      */
     public function destroy($id)
     {
-        Transaksi::findOrFail($id)->delete();
+        Lokasi::findOrFail($id)->delete();
         return $this->success(null, 'delete data success');
     }
 }

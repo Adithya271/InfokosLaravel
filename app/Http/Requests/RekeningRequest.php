@@ -3,10 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
-class JenisKosRequest extends BaseApiRequest
+class RekeningRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +13,7 @@ class JenisKosRequest extends BaseApiRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -26,9 +24,10 @@ class JenisKosRequest extends BaseApiRequest
     public function rules()
     {
         return [
-            'jenis' => 'string|required|min:3',
-
-
+            'pemilikId' => 'string|required|min:3',
+            'namaBank' => 'string|required|min:3',
+            'noRek' => 'string|required',
+            'atasNama' => 'string|required|min:3',
         ];
     }
 }

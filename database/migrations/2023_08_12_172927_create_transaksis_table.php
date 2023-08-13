@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
             $table->integer('pencariId');
-            $table->string('noTranskasi');
+            $table->string('noTransaksi');
             $table->date('tglTransaksi');
             $table->string('namaPencari');
             $table->integer('kosId');
@@ -32,7 +32,7 @@ return new class extends Migration
 
             $table->foreign('pencariId')->references('id')->on('user_pencaris')->onDelete('cascade');
             $table->foreign('kosId')->references('id')->on('penginapans')->onDelete('cascade');
-            $table->foreign('pemilikId')->references('id')->on('user_pemiliks')->onDelete('cascade');
+            $table->foreign('pemilikId')->references('id')->on('penginapans')->onDelete('cascade');
         });
     }
 
