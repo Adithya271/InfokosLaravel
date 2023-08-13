@@ -45,7 +45,7 @@ Route::group(['middleware' => 'useradmin'], function () {
 
     Route::delete('/userpencari/{id}', [UserPencariController::class, 'destroy'])->name('pencari.destroy');
     Route::get('/userpencari', [UserPencariController::class, 'index'])->name('pencari.index');
-    Route::post('/userpencari', [UserPencariController::class, 'store'])->name('pencari.store');
+    Route::post('/userpencari/tambah', [UserPencariController::class, 'store'])->name('pencari.store');
     Route::get('/userpencari/{id}/edit', [UserPencariController::class, 'edit'])->name('pencari.edit');
     Route::put('/userpencari/{id}', [UserPencariController::class, 'update'])->name('pencari.update');
     Route::get('/searchpencari', [UserPencariController::class, 'search'])->name('searchpencari');

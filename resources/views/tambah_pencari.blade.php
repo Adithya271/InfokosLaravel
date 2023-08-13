@@ -4,7 +4,7 @@
 
 <div class="container">
     <h1 class="mb-4">Tambah Pencari Kos</h1>
-    <form action="{{ route('userpencari.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('pencari.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="profilGambar">Foto Profil</label>
