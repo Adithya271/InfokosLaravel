@@ -62,6 +62,7 @@ class TransaksiController extends Controller
         $transaksi->tglTransaksi = $request->tglTransaksi;
         $transaksi->namaPencari = $request->namaPencari;
         $transaksi->kosId = $request->kosId;
+        $transaksi->jlhKamar = $request->jlhKamar;
         $transaksi->pemilikId = $request->pemilikId;
         $transaksi->catatanPesanan = $request->catatanPesanan;
         $transaksi->totalBayar = $request->totalBayar;
@@ -119,6 +120,7 @@ class TransaksiController extends Controller
         $transaksi->tglTransaksi = $request->tglTransaksi;
         $transaksi->namaPencari = $request->namaPencari;
         $transaksi->kosId = $request->kosId;
+        $transaksi->jlhKamar = $request->jlhKamar;
         $transaksi->pemilikId = $request->pemilikId;
         $transaksi->catatanPesanan = $request->catatanPesanan;
         $transaksi->totalBayar = $request->totalBayar;

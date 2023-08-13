@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('tglTransaksi');
             $table->string('namaPencari');
             $table->integer('kosId');
+            $table->string('jlhKamar');
             $table->integer('pemilikId');
             $table->string('catatanPesanan');
             $table->integer('totalBayar');
