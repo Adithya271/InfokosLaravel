@@ -27,10 +27,10 @@ return new class extends Migration
             $table->string('atasNama');
             $table->string('namaBank');
             $table->string('noRek');
-            $table->string('statusTransaksi');
+            $table->integer('statusTransaksi');
             $table->timestamps();
 
-         
+
         });
     }
 

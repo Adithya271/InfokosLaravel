@@ -55,7 +55,7 @@ class TransaksiController extends Controller
             $image = $request->file('buktiBayar');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs('public/images', $filename);
-            $transaksi->profilGambar = $filename;
+            $transaksi->buktiBayar = $filename;
         }
         $transaksi->pencariId = $request->pencariId;
         $transaksi->noTransaksi = $request->noTransaksi;
@@ -107,7 +107,25 @@ class TransaksiController extends Controller
     {
 
         $transaksi = Transaksi::findOrFail($id);
+        // Handle image upload
+        if ($request->hasFile('buktiBayar')) {
+            $image = $request->file('buktiBayar');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/images', $filename);
+            $transaksi->buktiBayar = $filename;
+        }
+        $transaksi->pencariId = $request->pencariId;
+        $transaksi->noTransaksi = $request->noTransaksi;
+        $transaksi->tglTransaksi = $request->tglTransaksi;
+        $transaksi->namaPencari = $request->namaPencari;
+        $transaksi->kosId = $request->kosId;
         $transaksi->pemilikId = $request->pemilikId;
+        $transaksi->catatanPesanan = $request->catatanPesanan;
+        $transaksi->totalBayar = $request->totalBayar;
+        $transaksi->atasNama = $request->atasNama;
+        $transaksi->namaBank = $request->namaBank;
+        $transaksi->noRek = $request->noRek;
+        $transaksi->statusTransaksi = $request->statusTransaksi;
         $transaksi->save();
         return $this->success($transaksi, 'update data success');
     }

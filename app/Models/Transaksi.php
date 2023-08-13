@@ -26,7 +26,7 @@ class Transaksi extends Model
 
     public function penginapans()
     {
-        return $this->hasMany(UserPencari::class, 'id', 'kosId');
+        return $this->hasMany(Penginapan::class, 'id', 'kosId');
     }
 
 }
