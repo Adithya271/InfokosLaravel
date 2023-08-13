@@ -24,8 +24,8 @@ class RekeningRequest extends FormRequest
     public function rules()
     {
         return [
-            'pemilikId' => 'string|required|min:3',
-            'namaBank' => 'string|required|min:3',
+            'pemilikId' => 'string|required',
+            'namaBank' => 'string|required',
             'noRek' => 'string|required',
             'atasNama' => 'string|required|min:3',
         ];

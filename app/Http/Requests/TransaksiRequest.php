@@ -28,12 +28,12 @@ class TransaksiRequest extends FormRequest
             'noTranskasi' => 'string|required|min:3',
             'tglTransaksi' => 'date|required',
             'namaPencari' => 'string|required|min:3',
-            'kosId' => 'integer|required|min:3',
-            'pemilikId' => 'integer|required|min:3',
+            'kosId' => 'integer|required',
+            'pemilikId' => 'integer|required',
             'totalBayar' => 'integer|required|min:3',
             'buktiBayar' => 'text|required|min:3',
             'atasNama' => 'string|required|min:3',
-            'namaBank' => 'string|required|min:3',
+            'namaBank' => 'string|required',
             'noRek' => 'integer|required|min:3',
 
         ];
