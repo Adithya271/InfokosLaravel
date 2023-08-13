@@ -12,4 +12,9 @@ class Rekening extends Model
         'pemilikId', 'namaBank', 'noRek', 'atasNama'
     ];
     protected $guarded = [];
+
+    public function user_pemiliks()
+    {
+        return $this->hasMany(UserPemilik::class, 'id', 'pemilikId');
+    }
 }

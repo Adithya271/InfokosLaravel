@@ -13,4 +13,20 @@ class Transaksi extends Model
         'totalBayar', 'buktiBayar', 'atasNama', 'namaBank', 'noRek', 'statusTransaksi',
     ];
     protected $guarded = [];
+
+    public function user_pemiliks()
+    {
+        return $this->hasMany(UserPemilik::class, 'id', 'pemilikId');
+    }
+
+    public function user_pencaris()
+    {
+        return $this->hasMany(UserPencari::class, 'id', 'pencariId');
+    }
+
+    public function penginapans()
+    {
+        return $this->hasMany(UserPencari::class, 'id', 'kosId');
+    }
+
 }
