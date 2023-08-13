@@ -35,6 +35,7 @@
                     <td>{{ $pencari->nomorHp }}</td>
                     <td>
                         <a href="{{ url('/userpencari/' . $pencari->id . '/edit') }}" class="btn btn-primary btn-sm">Edit</a>
+                         &nbsp; <!-- Non-breaking space for spacing -->
                         <form action="{{ url('/userpencari', ['id' => $pencari->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')

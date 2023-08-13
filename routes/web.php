@@ -39,6 +39,8 @@ Route::group(['middleware' => 'useradmin'], function () {
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
     Route::delete('/userpemilik/{id}', [UserPemilikController::class, 'destroy'])->name('pemilik.destroy');
     Route::get('/userpemilik', [UserPemilikController::class, 'index'])->name('pemilik.index');
+    Route::post('/userpemilik', [UserPemilikController::class, 'store'])->name('pemilik.store');
+    Route::get('/userpemilik/create', [UserPemilikController::class, 'create'])->name('pemilik.create');
     Route::get('/userpemilik/{id}/edit', [UserPemilikController::class, 'edit'])->name('pemilik.edit');
     Route::put('/userpemilik/{id}', [UserPemilikController::class, 'update'])->name('pemilik.update');
     Route::get('/searchpemilik', [UserPemilikController::class, 'search'])->name('searchpemilik');

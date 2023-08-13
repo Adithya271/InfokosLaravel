@@ -10,6 +10,9 @@
             <button type="submit" class="btn btn-primary mt-2">Search</button>
         </div>
     </form>
+     <div class="mb-3">
+       <a href="{{ route('pemilik.create') }}" class="btn btn-success">Tambah Data</a>
+    </div>
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead class="thead-dark">
@@ -32,12 +35,14 @@
                     <td>{{ $pemilik->nomorHp }}</td>
                     <td>
                         <a href="{{ url('/userpemilik/' . $pemilik->id . '/edit') }}" class="btn btn-primary btn-sm">Edit</a>
+                        &nbsp; <!-- Non-breaking space for spacing -->
                         <form action="{{ url('/userpemilik', ['id' => $pemilik->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">Hapus</button>
                         </form>
                     </td>
+
                 </tr>
                 @endforeach
             </tbody>

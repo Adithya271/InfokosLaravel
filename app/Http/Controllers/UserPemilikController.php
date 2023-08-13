@@ -75,7 +75,7 @@ class UserPemilikController extends Controller
 
         $userPemilik->nama = $request->input('nama');
         $userPemilik->nomorHp = $request->input('nomorHp');
-       
+
 
         $userPemilik->save();
 
@@ -86,10 +86,10 @@ class UserPemilikController extends Controller
     {
         $searchQuery = $request->input('search');
 
-        
+
         $records = UserPemilik::where('nama', 'like', '%' . $searchQuery . '%')->get();
 
-  
+
         return view('pemilik', compact('records', 'searchQuery'));
     }
     /**
@@ -99,7 +99,7 @@ class UserPemilikController extends Controller
      */
     public function create()
     {
-        //
+        return view('tambah_pemilik');
     }
 
     /**
@@ -147,7 +147,7 @@ class UserPemilikController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     public function edit($id)
     {
         $userpemilik = UserPemilik::findOrFail($id);
