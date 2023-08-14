@@ -14,33 +14,27 @@ class UserPencariController extends Controller
 
     public function index(Request $request)
     {
-        $limit = $request->limit;
+        $limit = $request->limit ?: 10; // Default limitnya 10
         $email = $request->email;
-        $orderCol = $request->order_col ? $request->order_col : 'id';
-        $orderType = $request->order_type ? $request->order_type : 'asc';
+        $orderCol = $request->order_col ?: 'id'; // Default order column nya 'id'
+        $orderType = $request->order_type ?: 'asc'; // Default order type nya 'asc'
 
         $userpencari = UserPencari::where(function ($f) use ($email) {
             if ($email && $email != '' && $email != 'null') {
                 $f->where('email', 'LIKE', '%' . $email . '%');
             }
         })
+            ->orderBy($orderCol, $orderType)
+            ->paginate($limit); // Paginate the records
 
-            ->orderBy($orderCol, $orderType)->paginate($limit);
-
-
-
-        $data['paging'] = new PaginationResource($userpencari);
-        $data['records'] = $userpencari->items();
 
         if ($request->wantsJson()) {
-        return $this->success($data, 'get records data success');
+            return $this->success($userpencari, 'get records data success');
+        }
+
+        return view('pencari', compact('userpencari')); // teruskan paginate data ke view
     }
 
-        return view('pencari', $data);
-
-
-
-    }
 
     public function getProfile(Request $request)
     {
@@ -56,16 +50,21 @@ class UserPencariController extends Controller
         return $this->success($userPencari, 'get profile data success');
     }
 
-     public function search(Request $request)
+    public function search(Request $request)
     {
         $searchQuery = $request->input('search');
+        $limit = $request->limit ?: 10;
 
+        $userpencari = UserPencari::where('nama', 'like', '%' . $searchQuery . '%')
+            ->paginate($limit); 
 
-        $records = UserPencari::where('nama', 'like', '%' . $searchQuery . '%')->get();
+        if ($request->wantsJson()) {
+            return $this->success($userpencari, 'get records data success');
+        }
 
-
-        return view('pencari', compact('records', 'searchQuery'));
+        return view('pencari', compact('userpencari', 'searchQuery'));
     }
+
 
     /**
      * Show the form for creating a new resource.

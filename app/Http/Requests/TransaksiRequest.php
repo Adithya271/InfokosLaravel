@@ -34,7 +34,6 @@ class TransaksiRequest extends FormRequest
             'jlhKamar' => 'integer|required',
             'pemilikId' => 'integer|required',
             'totalBayar' => 'string|required|min:3',
-            'buktiBayar' => 'required|file|mimes:jpeg,jpg,png,gif,bmp,pdf',
             'atasNama' => 'string|required|min:3',
             'namaBank' => 'string|required',
             'noRek' => 'integer|required|min:3',
