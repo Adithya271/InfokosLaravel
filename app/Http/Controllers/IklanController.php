@@ -22,14 +22,16 @@ class IklanController extends Controller
             }
         })
 
-            ->orderBy($orderCol, $orderType)
-            ->paginate($limit);
+            ->orderBy($orderCol, $orderType)->paginate($limit);
+
+        $data['paging'] = new PaginationResource($iklan);
+        $data['records'] = $iklan->items();
 
         if ($request->wantsJson()) {
-        return $this->success($iklan, 'get records iklan success');
+        return $this->success($data, 'get records data success');
     }
 
-        return view('iklan', compact('iklan'));
+        return view('iklan', $data);
 
 
     }
