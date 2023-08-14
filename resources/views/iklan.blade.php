@@ -6,7 +6,7 @@
     <h1 class="mb-4">Manage Iklan</h1>
 
     <!-- Form untuk mengunggah gambar -->
-    <form action="{{ isset($iklan) ? url('/iklan/'.$item->id) : url('/iklan') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ isset($iklan) ? url('/iklan/'.$iklan->id) : url('/iklan') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <!-- Cek apakah ini untuk mengupdate data -->
