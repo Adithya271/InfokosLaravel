@@ -17,6 +17,7 @@
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
+                    <th scope="col">ID</th>
                     <th scope="col">Foto Profil</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Email</th>
@@ -25,8 +26,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($records as $pemilik)
+                @foreach($userpemilik as $pemilik)
                 <tr>
+                     <td>{{ $pemilik->id }}</td>
                     <td>
                         <img src="{{ asset('api/images/' . $pemilik->profilGambar) }}" alt="Foto Profil" width="50" height="50">
                     </td>
@@ -35,7 +37,7 @@
                     <td>{{ $pemilik->nomorHp }}</td>
                     <td>
                         <a href="{{ url('/userpemilik/' . $pemilik->id . '/edit') }}" class="btn btn-primary btn-sm">Edit</a>
-                        &nbsp; <!-- Non-breaking space for spacing -->
+
                         <form action="{{ url('/userpemilik', ['id' => $pemilik->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')

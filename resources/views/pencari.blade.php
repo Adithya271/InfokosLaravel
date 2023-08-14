@@ -17,6 +17,7 @@
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
+                    <th scope="col">ID</th>
                     <th scope="col">Foto Profil</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Email</th>
@@ -27,6 +28,7 @@
             <tbody>
                 @foreach($userpencari as $pencari)
                 <tr>
+                    <td>{{ $pencari->id }}</td>
                     <td>
                         <img src="{{ asset('api/images/' . $pencari->profilGambar) }}" alt="Foto Profil" width="50" height="50">
                     </td>

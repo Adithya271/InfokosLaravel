@@ -13,29 +13,25 @@ class UserPemilikController extends Controller
 {
     public function index(Request $request)
     {
-        $limit = $request->limit;
+        $limit = $request->limit ?: 10;
         $email = $request->email;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
 
-        $userPemilik = Userpemilik::where(function ($f) use ($email) {
+        $userpemilik = UserPemilik::where(function ($f) use ($email) {
             if ($email && $email != '' && $email != 'null') {
                 $f->where('email', 'LIKE', '%' . $email . '%');
             }
         })
 
-            ->orderBy($orderCol, $orderType)->paginate($limit);
-
-        $data['paging'] = new PaginationResource($userPemilik);
-        $data['records'] = $userPemilik->items();
+            ->orderBy($orderCol, $orderType)
+            ->paginate($limit);
 
         if ($request->wantsJson()) {
-        return $this->success($data, 'get records data success');
+        return $this->success($userpemilik, 'get records data success');
     }
 
-
-        return view('pemilik', $data);
-
+        return view('pemilik', compact('userpemilik'));
 
     }
 
@@ -48,9 +44,9 @@ class UserPemilikController extends Controller
         \Log::info("User ID: " . $userId);
 
 
-        $userPemilik = UserPemilik::findOrFail($userId);
+        $userpemilik = UserPemilik::findOrFail($userId);
 
-        return $this->success($userPemilik, 'get profile data success');
+        return $this->success($userpemilik, 'get profile data success');
     }
 
     public function updateProfilePemilik(Request $request, $id)
@@ -64,22 +60,22 @@ class UserPemilikController extends Controller
             return $this->error($validator->errors()->toArray(), 'Validation Error', 400);
         }
 
-        $userPemilik = UserPemilik::findOrFail($id);
+        $userpemilik = UserPemilik::findOrFail($id);
 
         if ($request->hasFile('profilGambar')) {
             $image = $request->file('profilGambar');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs('public/images', $filename);
-            $userPemilik->profilGambar = str_replace('"', '', $filename);
+            $userpemilik->profilGambar = str_replace('"', '', $filename);
         }
 
-        $userPemilik->nama = $request->input('nama');
-        $userPemilik->nomorHp = $request->input('nomorHp');
+        $userpemilik->nama = $request->input('nama');
+        $userpemilik->nomorHp = $request->input('nomorHp');
 
 
-        $userPemilik->save();
+        $userpemilik->save();
 
-        return $this->success($userPemilik, 'update data success');
+        return $this->success($userpemilik, 'update data success');
     }
 
    public function search(Request $request)
@@ -110,23 +106,23 @@ class UserPemilikController extends Controller
      */
     public function store(UserPemilikRequest $request)
     {
-        $userPemilik = new UserPemilik();
+        $userpemilik = new UserPemilik();
         // Handle image upload
         if ($request->hasFile('profilGambar')) {
             $image = $request->file('profilGambar');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs('public/images', $filename);
-            $userPemilik->profilGambar = $filename;
+            $userpemilik->profilGambar = $filename;
         }
-        $userPemilik->email = $request->email;
-        $userPemilik->password = Hash::make($request->password);
-        $userPemilik->nama = $request->nama;
-        $userPemilik->nomorHp = $request->nomorHp;
-        $userPemilik->email_verified_at = $request->email_verified_at;
-        $userPemilik->role = 'pemilik';
-        $userPemilik->save();
+        $userpemilik->email = $request->email;
+        $userpemilik->password = Hash::make($request->password);
+        $userpemilik->nama = $request->nama;
+        $userpemilik->nomorHp = $request->nomorHp;
+        $userpemilik->email_verified_at = $request->email_verified_at;
+        $userpemilik->role = 'pemilik';
+        $userpemilik->save();
 
-        return $this->success($userPemilik, 'save data success');
+        return $this->success($userpemilik, 'save data success');
     }
 
     /**
@@ -137,8 +133,8 @@ class UserPemilikController extends Controller
      */
     public function show($id)
     {
-        $userPemilik = Userpemilik::findOrFail($id);
-        return $this->success($userPemilik, 'get record success');
+        $userpemilik = Userpemilik::findOrFail($id);
+        return $this->success($userpemilik, 'get record success');
     }
 
     /**
@@ -163,21 +159,21 @@ class UserPemilikController extends Controller
      */
     public function update(UserPemilikRequest $request, $id)
     {
-        $userPemilik = UserPemilik::findOrFail($id);
+        $userpemilik = UserPemilik::findOrFail($id);
         // Handle image upload
         if ($request->hasFile('profilGambar')) {
             $image = $request->file('profilGambar');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs('public/images', $filename);
-            $userPemilik->profilGambar = $filename;
+            $userpemilik->profilGambar = $filename;
         }
-        $userPemilik->email = $request->email;
-        $userPemilik->password = Hash::make($request->password);
-        $userPemilik->nama = $request->nama;
-        $userPemilik->nomorHp = $request->nomorHp;
-        $userPemilik->email_verified_at = $request->email_verified_at;
-        $userPemilik->role = 'pemilik';
-        $userPemilik->save();
+        $userpemilik->email = $request->email;
+        $userpemilik->password = Hash::make($request->password);
+        $userpemilik->nama = $request->nama;
+        $userpemilik->nomorHp = $request->nomorHp;
+        $userpemilik->email_verified_at = $request->email_verified_at;
+        $userpemilik->role = 'pemilik';
+        $userpemilik->save();
 
          return redirect('/userpemilik')->with('success', 'Update data success');
     }
@@ -190,7 +186,7 @@ class UserPemilikController extends Controller
      */
     public function destroy($id)
     {
-        Userpemilik::findOrFail($id)->delete();
+        UserPemilik::findOrFail($id)->delete();
         return $this->success(null, 'delete data success');
     }
 }
