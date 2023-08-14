@@ -14,6 +14,7 @@
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
+                     <th scope="col">ID</th>
                     <th scope="col">Gambar Kos</th>
                     <th scope="col">Nama Kos</th>
                     <th scope="col">Alamat</th>
@@ -25,8 +26,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($records as $penginapan)
+                @foreach($penginapan as $penginapan)
                 <tr>
+                    <td>{{ $penginapan->id }}</td>
                     <td>
                         <img src="{{ asset('api/images/' . $penginapan->gambarKos) }}" alt="Gambar Kos" width="50" height="50">
                     </td>

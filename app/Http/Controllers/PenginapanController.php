@@ -13,8 +13,8 @@ class PenginapanController extends Controller
 {
     public function index(Request $request)
     {
-        $limit = $request->limit;
-        $namaKecamatan = $request->jenis;
+        $limit = $request->limit ?: 10;
+        $namaKecamatan = $request->namaKecamatan;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
 
@@ -30,14 +30,12 @@ class PenginapanController extends Controller
             ->orderBy($orderCol, $orderType)
             ->paginate($limit);
 
-        $data['paging'] = new PaginationResource($penginapan);
-        $data['records'] = $penginapan->items();
 
         if ($request->wantsJson()) {
-        return $this->success($data, 'get records data success');
+        return $this->success($penginapan, 'get records penginapan success');
     }
 
-        return view('kos', $data);
+        return view('kos', compact('penginapan'));
 
 
     }

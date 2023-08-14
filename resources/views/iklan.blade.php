@@ -35,7 +35,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($records as $iklan)
+                @foreach($iklan as $iklan)
                 <tr>
                     <td>{{ $iklan->id }}</td>
                    <td>

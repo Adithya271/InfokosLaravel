@@ -11,7 +11,7 @@ class IklanController extends Controller
 {
     public function index(Request $request)
     {
-        $limit = $request->limit;
+        $limit = $request->limit ?: 10;
         $gambar = $request->gambar;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
@@ -24,16 +24,13 @@ class IklanController extends Controller
 
             ->orderBy($orderCol, $orderType)->paginate($limit);
 
-        $data['paging'] = new PaginationResource($iklan);
-        $data['records'] = $iklan->items();
-        
         if ($request->wantsJson()) {
-        return $this->success($data, 'get records data success');
+        return $this->success($iklan, 'get records iklan success');
     }
 
-        return view('iklan', $data);
+        return view('iklan', compact('iklan'));
 
-       
+
     }
 
     /**

@@ -16,8 +16,8 @@ class UserPencariController extends Controller
     {
         $limit = $request->limit ?: 10;
         $email = $request->email;
-        $orderCol = $request->order_col ?: 'id';
-        $orderType = $request->order_type ?: 'asc'; 
+        $orderCol = $request->order_col ? $request->order_col : 'id';
+        $orderType = $request->order_type ? $request->order_type : 'asc';
 
         $userpencari = UserPencari::where(function ($f) use ($email) {
             if ($email && $email != '' && $email != 'null') {
