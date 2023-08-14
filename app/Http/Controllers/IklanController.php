@@ -22,7 +22,8 @@ class IklanController extends Controller
             }
         })
 
-            ->orderBy($orderCol, $orderType)->paginate($limit);
+            ->orderBy($orderCol, $orderType)
+            ->paginate($limit);
 
         if ($request->wantsJson()) {
         return $this->success($iklan, 'get records iklan success');

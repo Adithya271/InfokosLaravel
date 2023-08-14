@@ -35,15 +35,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($iklan as $item)
+                @foreach($iklan as $iklan)
                 <tr>
-                    <td>
-                        <img src="{{ asset('api/images/' . $item->gambar) }}" alt="Iklan Gambar" width="50" height="50">
+                    <td>{{ $iklan->id }}</td>
+                   <td>
+                    <img src="{{ asset('api/images/' . $iklan->gambar) }}" alt="Gambar Iklan" width="50" height="50">
                     </td>
-
                     <td>
-                        <a href="{{ url('/iklan/' . $item->id . '/edit') }}" class="btn btn-primary btn-sm">Edit</a>
-                        <form action="{{ url('/iklan', ['id' => $item->id]) }}" method="POST">
+                        <form action="{{ url('/iklan', ['id' => $iklan->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">Hapus</button>
