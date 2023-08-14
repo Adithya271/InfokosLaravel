@@ -29,8 +29,13 @@
                 @foreach($penginapan as $penginapan)
                 <tr>
                     <td>{{ $penginapan->id }}</td>
-                    <td>
-                        <img src="{{ asset('api/images/' . $penginapan->gambarKos) }}" alt="Gambar Kos" width="50" height="50">
+                                    <td>
+                        @php
+                            $gambarArray = explode(',', $item->gambarKos);
+                            $firstImage = trim($gambarArray[0]); 
+                        @endphp
+
+                        <img src="{{ asset('api/images/' . $firstImage) }}" alt="Gambar Kos" width="50" height="50">
                     </td>
                     <td>{{ $penginapan->namaKos }}</td>
                     <td>{{ $penginapan->alamat }}</td>
