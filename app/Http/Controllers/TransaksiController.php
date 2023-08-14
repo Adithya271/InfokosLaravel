@@ -68,6 +68,7 @@ class TransaksiController extends Controller
         $transaksi->totalBayar = $request->totalBayar;
         $transaksi->atasNama = $request->atasNama;
         $transaksi->namaBank = $request->namaBank;
+        $transaksi->buktiBayar = $request->buktiBayar;
         $transaksi->noRek = $request->noRek;
         $transaksi->statusTransaksi = $request->statusTransaksi;
         $transaksi->save();
@@ -126,6 +127,7 @@ class TransaksiController extends Controller
         $transaksi->totalBayar = $request->totalBayar;
         $transaksi->atasNama = $request->atasNama;
         $transaksi->namaBank = $request->namaBank;
+        $transaksi->buktiBayar = $request->buktiBayar;
         $transaksi->noRek = $request->noRek;
         $transaksi->statusTransaksi = $request->statusTransaksi;
         $transaksi->save();
