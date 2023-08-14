@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use App\Models\Penginapan;
 use App\Http\Requests\TransaksiRequest;
 use Illuminate\Http\Request;
 use App\Http\Resources\PaginationResource;
@@ -133,6 +134,23 @@ class TransaksiController extends Controller
         $transaksi->save();
         return $this->success($transaksi, 'update data success');
     }
+
+    public function updateJlhKamar($id)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+        $penginapanId = $transaksi->kosId;
+        $jumlahKamarDipesan = $transaksi->jlhKamar;
+
+        $penginapan = Penginapan::findOrFail($penginapanId);
+        $penginapan->jlhKamar -= $jumlahKamarDipesan;
+        $penginapan->save();
+
+        $transaksi->statusTransaksi = 'disetujui';
+        $transaksi->save();
+
+        return response()->json(['success' => true]);
+    }
+
 
     /**
      * Remove the specified resource from storage.

@@ -290,6 +290,8 @@ class PenginapanController extends Controller
         return $this->success($penginapan, 'update data success');
     }
 
+
+
     public function setuju($id)
     {
         $penginapan = Penginapan::findOrFail($id);

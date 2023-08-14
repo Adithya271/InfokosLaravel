@@ -26,43 +26,43 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($penginapan as $penginapan)
+                @foreach($penginapan as $item)
                 <tr>
-                    <td>{{ $penginapan->id }}</td>
-                                    <td>
+                    <td>{{ $item->id }}</td>
+                    <td>
                         @php
                             $gambarArray = explode(',', $item->gambarKos);
-                            $firstImage = trim($gambarArray[0]); 
+                            $firstImage = trim($gambarArray[0]);
                         @endphp
 
                         <img src="{{ asset('api/images/' . $firstImage) }}" alt="Gambar Kos" width="50" height="50">
                     </td>
-                    <td>{{ $penginapan->namaKos }}</td>
-                    <td>{{ $penginapan->alamat }}</td>
-                    <td>{{ $penginapan->tipe }}</td>
-                    <td>{{ $penginapan->harga }}</td>
-                     <td>
-                        @if ($penginapan->disetujui == 0)
+                    <td>{{ $item->namaKos }}</td>
+                    <td>{{ $item->alamat }}</td>
+                    <td>{{ $item->tipe }}</td>
+                    <td>{{ $item->harga }}</td>
+                    <td>
+                        @if ($item->disetujui == 0)
                             Ya
                         @else
                             Tidak
                         @endif
                     </td>
                     <td>
-                        @if ($penginapan->disetujui == 0)
-                            <form action="{{ url('/penginapan/tolak', ['id' => $penginapan->id]) }}" method="POST">
+                        @if ($item->disetujui == 0)
+                            <form action="{{ url('/penginapan/tolak', ['id' => $item->id]) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-sm">Tolak</button>
                             </form>
                         @else
-                            <form action="{{ url('/penginapan/setuju', ['id' => $penginapan->id]) }}" method="POST">
+                            <form action="{{ url('/penginapan/setuju', ['id' => $item->id]) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-success btn-sm">Setujui</button>
                             </form>
                         @endif
                     </td>
                     <td>
-                        <form action="{{ url('/penginapan', ['id' => $penginapan->id]) }}" method="POST">
+                        <form action="{{ url('/penginapan', ['id' => $item->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">Hapus</button>

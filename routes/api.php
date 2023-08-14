@@ -56,16 +56,9 @@ Route::put('/kecamatan/{id}', [KecamatanController::class, 'update']);
 Route::delete('/kecamatan/{id}', [KecamatanController::class, 'destroy']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::group(['middleware' => 'useradmin'], function () {
+    Route::group(['middleware' => 'useradmin'], function () { });
 
-
-
-    });
-
-    Route::group(['middleware' => 'userpemilik'], function () {
-
-
-    });
+    Route::group(['middleware' => 'userpemilik'], function () { });
 });
 
 Route::get('/useradmin', [UserAdminController::class, 'index']);
@@ -128,6 +121,7 @@ Route::delete('/lokasi/{id}', [LokasiController::class, 'destroy']);
 
 Route::get('/transaksi', [TransaksiController::class, 'index']);
 Route::post('/transaksi', [TransaksiController::class, 'store']);
+Route::post('/transaksisetuju/{id}', [TransaksiController::class, 'updateJlhKamar']);
 Route::put('/transaksi/{id}', [TransaksiController::class, 'update']);
 Route::delete('/transaksi/{id}', [TransaksiController::class, 'destroy']);
 
