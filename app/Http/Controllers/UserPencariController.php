@@ -14,10 +14,10 @@ class UserPencariController extends Controller
 
     public function index(Request $request)
     {
-        $limit = $request->limit ?: 10; // Default limitnya 10
+        $limit = $request->limit ?: 10;
         $email = $request->email;
-        $orderCol = $request->order_col ?: 'id'; // Default order column nya 'id'
-        $orderType = $request->order_type ?: 'asc'; // Default order type nya 'asc'
+        $orderCol = $request->order_col ?: 'id';
+        $orderType = $request->order_type ?: 'asc'; 
 
         $userpencari = UserPencari::where(function ($f) use ($email) {
             if ($email && $email != '' && $email != 'null') {
@@ -25,14 +25,14 @@ class UserPencariController extends Controller
             }
         })
             ->orderBy($orderCol, $orderType)
-            ->paginate($limit); // Paginate the records
+            ->paginate($limit);
 
 
         if ($request->wantsJson()) {
             return $this->success($userpencari, 'get records data success');
         }
 
-        return view('pencari', compact('userpencari')); // teruskan paginate data ke view
+        return view('pencari', compact('userpencari'));
     }
 
 
@@ -56,7 +56,7 @@ class UserPencariController extends Controller
         $limit = $request->limit ?: 10;
 
         $userpencari = UserPencari::where('nama', 'like', '%' . $searchQuery . '%')
-            ->paginate($limit); 
+            ->paginate($limit);
 
         if ($request->wantsJson()) {
             return $this->success($userpencari, 'get records data success');
