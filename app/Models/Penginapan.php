@@ -23,8 +23,9 @@ class Penginapan extends Model
 
     public function user_pemilik()
     {
-        return $this->hasOne(UserPemilik::class, 'id', 'pemilikId');
+        return $this->belongsTo(UserPemilik::class, 'pemilikId', 'id');
     }
+
 
     public function saveImage($filename)
     {

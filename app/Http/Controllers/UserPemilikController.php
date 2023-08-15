@@ -28,32 +28,40 @@ class UserPemilikController extends Controller
             ->paginate($limit);
 
         if ($request->wantsJson()) {
-        return $this->success($userpemilik, 'get records data success');
-    }
+            return $this->success($userpemilik, 'get records data success');
+        }
 
         return view('pemilik', compact('userpemilik'));
-
     }
 
-    public function getProfile(Request $request)
+    public function getProfile(Request $request, $id)
     {
 
-        $userId = $request->user()->id;
+        $limit = $request->limit ?: 10;
+        $id = $id;
+        $orderCol = $request->order_col ? $request->order_col : 'id';
+        $orderType = $request->order_type ? $request->order_type : 'asc';
 
+        $userpemilik = UserPemilik::where(function ($f) use ($id) {
+            if ($id && $id != '' && $id != 'null') {
+                $f->where('id', 'LIKE', '%' . $id . '%');
+            }
+        })
 
-        \Log::info("User ID: " . $userId);
+            ->orderBy($orderCol, $orderType)
+            ->paginate($limit);
 
-
-        $userpemilik = UserPemilik::findOrFail($userId);
-
-        return $this->success($userpemilik, 'get profile data success');
+        if ($request->wantsJson()) {
+            return $this->success($userpemilik, 'get records data success');
+        }
     }
 
     public function updateProfilePemilik(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:255',
-            'nomorHp' => 'required|string|max:15',
+            'nama' => 'nullable|string|max:255',
+            'nomorHp' => 'nullable|string|max:15',
+            'profilGambar' => 'nullable',
         ]);
 
         if ($validator->fails()) {
@@ -69,16 +77,45 @@ class UserPemilikController extends Controller
             $userpemilik->profilGambar = str_replace('"', '', $filename);
         }
 
-        $userpemilik->nama = $request->input('nama');
-        $userpemilik->nomorHp = $request->input('nomorHp');
 
+        if ($request->has('nama')) {
+            $userpemilik->nama = $request->input('nama');
+        }
+        if ($request->has('nomorHp')) {
+            $userpemilik->nomorHp = $request->input('nomorHp');
+        }
+        if ($request->has('profilGambar')) {
+            $userpemilik->profilGambar = $request->input('profilGambar');
+        }
 
         $userpemilik->save();
 
+        return $this->success($userpemilik, 'update profil success');
+    }
+
+
+    public function updateRekeningPemilik(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'namaBank' => 'required|string|max:255',
+            'noRek' => 'required|integer',
+            'atasNama' => 'required|string|max:100',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->error($validator->errors()->toArray(), 'Validation Error', 400);
+        }
+
+        $userpemilik = UserPemilik::findOrFail($id);
+
+        $userpemilik->namaBank = $request->input('namaBank');
+        $userpemilik->noRek = $request->input('noRek');
+        $userpemilik->atasNama = $request->input('atasNama');
+        $userpemilik->save();
         return $this->success($userpemilik, 'update data success');
     }
 
-   public function search(Request $request)
+    public function search(Request $request)
     {
         $searchQuery = $request->input('search');
 
@@ -175,7 +212,7 @@ class UserPemilikController extends Controller
         $userpemilik->role = 'pemilik';
         $userpemilik->save();
 
-         return redirect('/userpemilik')->with('success', 'Update data success');
+        return redirect('/userpemilik')->with('success', 'Update data success');
     }
 
     /**

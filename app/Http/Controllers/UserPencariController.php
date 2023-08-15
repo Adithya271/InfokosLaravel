@@ -88,32 +88,38 @@ class UserPencariController extends Controller
 
         $validator = Validator::make($request->all(), [
 
-            'nama' => 'required|string|max:255',
-            'nomorHp' => 'required|string|max:15',
+            'nama' => 'nullable|string|max:255',
+            'nomorHp' => 'nullable|string|max:15',
+            'profilGambar' => 'nullable',
         ]);
 
         if ($validator->fails()) {
             return $this->error($validator->errors()->toArray(), 'Validation Error', 400);
         }
 
-        $userPencari = UserPencari::findOrFail($id);
+        $userpencari = UserPencari::findOrFail($id);
 
         // Handle image upload if provided
         if ($request->hasFile('profilGambar')) {
             $image = $request->file('profilGambar');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs('public/images', $filename);
-            $userPencari->profilGambar = str_replace('"', '', $filename);
+            $userpencari->profilGambar = str_replace('"', '', $filename);
         }
 
-        // Update other fields
-        $userPencari->nama = $request->input('nama');
-        $userPencari->nomorHp = $request->input('nomorHp');
-        $userPencari->profilGambar = $request->input('profilGambar');
+        if ($request->has('nama')) {
+            $userpencari->nama = $request->input('nama');
+        }
+        if ($request->has('nomorHp')) {
+            $userpencari->nomorHp = $request->input('nomorHp');
+        }
+        if ($request->has('profilGambar')) {
+            $userpencari->profilGambar = $request->input('profilGambar');
+        }
 
-        $userPencari->save();
+        $userpencari->save();
 
-        return $this->success($userPencari, 'update data success');
+        return $this->success($userpencari, 'update profile success');
     }
 
 

@@ -15,11 +15,11 @@ class PenginapanController extends Controller
     {
         $limit = $request->limit ?: 10;
         $namaKecamatan = $request->namaKecamatan;
+        $id = $request->pemilikId;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
 
-
-        $penginapan = Penginapan::with('kecamatan', 'user_pemilik')
+        $query = Penginapan::with('kecamatan', 'user_pemilik')
             ->where(function ($query) use ($namaKecamatan) {
                 if ($namaKecamatan && $namaKecamatan != '' && $namaKecamatan != 'null') {
                     $query->whereHas('kecamatan', function ($f) use ($namaKecamatan) {
@@ -27,11 +27,13 @@ class PenginapanController extends Controller
                     });
                 }
             })
-            ->orderBy($orderCol, $orderType)
-            ->paginate($limit);
+            ->orderBy($orderCol, $orderType);
 
-        $penginapan->load('user_pemilik');
+        if ($id) {
+            $query->where('pemilikId', $id);
+        }
 
+        $penginapan = $query->paginate($limit);
 
         if ($request->wantsJson()) {
             return $this->success($penginapan, 'get records penginapan success');
@@ -55,11 +57,12 @@ class PenginapanController extends Controller
     {
         $limit = $request->limit;
         $namaKecamatan = $request->kecamatan;
+        $id = $request->pemilikId;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
 
 
-        $penginapan = Penginapan::with('kecamatan')
+        $penginapan = Penginapan::with('kecamatan', 'user_pemilik')
             ->where(function ($query) use ($namaKecamatan) {
                 if ($namaKecamatan && $namaKecamatan != '' && $namaKecamatan != 'null') {
 
@@ -68,10 +71,17 @@ class PenginapanController extends Controller
                     });
                 }
             })
+
+
             ->where('disetujui', '0')
 
             ->orderBy($orderCol, $orderType)
             ->paginate($limit);
+
+        if ($id) {
+            $query->where('pemilikId', $id);
+        }
+
 
         $data['paging'] = new PaginationResource($penginapan);
         $data['records'] = $penginapan->items();
@@ -84,10 +94,11 @@ class PenginapanController extends Controller
     {
         $limit = $request->limit;
         $namaKecamatan = $request->kecamatan;
+        $id = $request->pemilikId;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
 
-        $penginapan = Penginapan::with('kecamatan')
+        $penginapan = Penginapan::with('kecamatan', 'user_pemilik')
             ->where(function ($query) use ($namaKecamatan) {
                 if ($namaKecamatan && $namaKecamatan != '' && $namaKecamatan != 'null') {
 
@@ -101,6 +112,10 @@ class PenginapanController extends Controller
             ->orderBy($orderCol, $orderType)
             ->paginate($limit);
 
+        if ($id) {
+            $query->where('pemilikId', $id);
+        }
+
         $data['paging'] = new PaginationResource($penginapan);
         $data['records'] = $penginapan->items();
 
@@ -111,12 +126,13 @@ class PenginapanController extends Controller
     {
         $limit = $request->limit;
         $namaKos = $request->namaKos;
+        $id = $request->pemilikId;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
         $kecamatan = $request->kecamatan;
 
 
-        $penginapan = Penginapan::with('kecamatan')
+        $penginapan = Penginapan::with('kecamatan', 'user_pemilik')
             ->where(function ($query) use ($kecamatan) {
                 if ($kecamatan && $kecamatan != '' && $kecamatan != 'null') {
                     $query->whereHas('kecamatan', function ($f) use ($kecamatan) {
@@ -136,6 +152,10 @@ class PenginapanController extends Controller
             ->where('disetujui', '0')
             ->orderBy($orderCol, $orderType)
             ->paginate($limit);
+
+        if ($id) {
+            $query->where('pemilikId', $id);
+        }
 
         $data['paging'] = new PaginationResource($penginapan);
         $data['records'] = $penginapan->items();

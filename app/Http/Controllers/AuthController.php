@@ -61,12 +61,12 @@ class AuthController extends Controller
             'message' => 'Sukses register, silahkan cek email anda untuk verifikasi',
         ]);
     }
-    
-     public function confirmationpemilik(Request $request, $id)
+
+    public function confirmationpemilik(Request $request, $id)
     {
         $key = $request->query('signature');
-  
-         Log::info('ID: ' . $id);
+
+        Log::info('ID: ' . $id);
         Log::info('Signature: ' . $key);
         $user = UserPemilik::where('id', $id)->where('remember_token', $key)->first();
 
@@ -82,7 +82,7 @@ class AuthController extends Controller
         }
         Log::info('User: ' . $user);
 
-     
+
         return response()->json([
             'success' => false,
             'message' => 'Verifikasi gagal',
@@ -134,8 +134,8 @@ class AuthController extends Controller
     public function confirmation(Request $request, $id)
     {
         $key = $request->query('signature');
-  
-         Log::info('ID: ' . $id);
+
+        Log::info('ID: ' . $id);
         Log::info('Signature: ' . $key);
         $user = UserPencari::where('id', $id)->where('remember_token', $key)->first();
 
@@ -151,14 +151,14 @@ class AuthController extends Controller
         }
         Log::info('User: ' . $user);
 
-     
+
         return response()->json([
             'success' => false,
             'message' => 'Verifikasi gagal',
             'data' => 'Unauthorized'
         ], 401);
     }
-    
+
 
     public function loginpemilik(Request $request)
     {
@@ -193,7 +193,10 @@ class AuthController extends Controller
                 'nama' => $userpemilik->nama,
                 'email' => $userpemilik->email,
                 'nomorHp' => $userpemilik->nomorHp,
-                'profilGambar' => $userpemilik->profilGambar
+                'profilGambar' => $userpemilik->profilGambar,
+                'namaBank' => $userpemilik->namaBank,
+                'noRek' => $userpemilik->noRek,
+                'atasNama' => $userpemilik->atasNama
             ]
         ]);
     }
@@ -245,7 +248,7 @@ class AuthController extends Controller
 
 
 
-     public function loginadmin(Request $request)
+    public function loginadmin(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
@@ -253,7 +256,7 @@ class AuthController extends Controller
 
             return redirect()->route('dashboard');
         } else {
-          
+
             return redirect()->route('login')->with([
                 'error' => 'Cek Email dan password lagi',
             ]);

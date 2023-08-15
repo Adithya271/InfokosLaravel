@@ -70,9 +70,11 @@ Route::post('/penginapan', [PenginapanController::class, 'store']);
 Route::get('/userpemilik', [UserPemilikController::class, 'index']);
 Route::post('/userpemilik', [UserPemilikController::class, 'store']);
 Route::put('/userpemilik/{id}', [UserPemilikController::class, 'update']);
+Route::put('/updaterekeningpemilik/{id}', [UserPemilikController::class, 'updateRekeningPemilik']);
 Route::post('/userpemilik', [UserPemilikController::class, 'store']);
 Route::put('/userpemilik/{id}', [UserPemilikController::class, 'update']);
 Route::put('/updateprofilepemilik/{id}', [UserPemilikController::class, 'updateProfilePemilik']);
+Route::get('/getprofile/{id}', [UserPemilikController::class, 'getProfile']);
 
 Route::get('/jeniskos', [JenisKosController::class, 'index']);
 

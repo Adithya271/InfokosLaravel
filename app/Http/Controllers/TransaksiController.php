@@ -52,11 +52,11 @@ class TransaksiController extends Controller
     {
         $transaksi = new Transaksi();
         // Handle image upload
-        if ($request->hasFile('buktiBayar')) {
-            $image = $request->file('buktiBayar');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
+        if ($request->hasFile('filename')) {
+            $image = $request->file('filename');
+            $filename = time() . '_' . $image->getClientOriginalName();
             $path = $image->storeAs('public/images', $filename);
-            $transaksi->buktiBayar = $filename;
+            $transaksi->buktiBayar = basename($path);
         }
         $transaksi->pencariId = $request->pencariId;
         $transaksi->noTransaksi = $request->noTransaksi;

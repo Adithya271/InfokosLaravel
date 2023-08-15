@@ -13,8 +13,8 @@ class Rekening extends Model
     ];
     protected $guarded = [];
 
-    public function user_pemiliks()
+    public function userPemilik()
     {
-        return $this->hasMany(UserPemilik::class, 'id', 'pemilikId');
+        return $this->belongsTo(UserPemilik::class, 'pemilikId');
     }
 }
