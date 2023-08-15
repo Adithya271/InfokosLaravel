@@ -19,7 +19,7 @@ class PenginapanController extends Controller
         $orderType = $request->order_type ? $request->order_type : 'asc';
 
 
-        $penginapan = Penginapan::with('kecamatan')
+        $penginapan = Penginapan::with('kecamatan', 'user_pemilik')
             ->where(function ($query) use ($namaKecamatan) {
                 if ($namaKecamatan && $namaKecamatan != '' && $namaKecamatan != 'null') {
                     $query->whereHas('kecamatan', function ($f) use ($namaKecamatan) {
@@ -30,17 +30,17 @@ class PenginapanController extends Controller
             ->orderBy($orderCol, $orderType)
             ->paginate($limit);
 
+        $penginapan->load('user_pemilik');
+
 
         if ($request->wantsJson()) {
-        return $this->success($penginapan, 'get records penginapan success');
-    }
+            return $this->success($penginapan, 'get records penginapan success');
+        }
 
         return view('kos', compact('penginapan'));
-
-
     }
 
-     public function search(Request $request)
+    public function search(Request $request)
     {
         $searchQuery = $request->input('search');
 

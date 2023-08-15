@@ -20,6 +20,9 @@ class UserPemilik extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'nama',
         'email',
+        'namaBank',
+        'noRek',
+        'atasNama',
         'email_verified_at',
         'password',
         'nomorHp',
@@ -35,7 +38,7 @@ class UserPemilik extends Authenticatable implements MustVerifyEmail
      */
     protected $hidden = [
         'password',
-        
+
     ];
 
     /**
@@ -43,7 +46,7 @@ class UserPemilik extends Authenticatable implements MustVerifyEmail
      *
      * @var array<string, string>
      */
-    
+
 
     public function isUserPemilik()
     {

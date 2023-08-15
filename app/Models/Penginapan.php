@@ -11,8 +11,8 @@ class Penginapan extends Model
     protected $fillable = [
         'namakos', 'alamat', 'cerita', 'disetujui', 'fasKamar',
         'fasKamarmandi', 'fasParkir', 'fasUmum', 'harga', 'hargaPromo',
-         'gambarKos', 'isPromo', 'jenis', 'lokasi', 'jlhKamar', 'namaKecamatan',
-         'pemilikId', 'peraturan', 'spektipekamar', 'tipe'
+        'gambarKos', 'isPromo', 'jenis', 'lokasi', 'jlhKamar', 'namaKecamatan',
+        'pemilikId', 'peraturan', 'spektipekamar', 'tipe'
     ];
     protected $guarded = [];
 
@@ -21,10 +21,14 @@ class Penginapan extends Model
         return $this->belongsTo(Kecamatan::class, 'namaKecamatan', 'namaKecamatan');
     }
 
+    public function user_pemilik()
+    {
+        return $this->hasOne(UserPemilik::class, 'id', 'pemilikId');
+    }
+
     public function saveImage($filename)
     {
         $this->gambarKos = $filename;
         $this->save();
     }
-
 }
