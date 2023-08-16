@@ -54,6 +54,28 @@ class LokasiController extends Controller
         return $this->success($lokasi, 'save data success');
     }
 
+    public function storeOrUpdate(LokasiRequest $request)
+    {
+        $existingLokasi = Lokasi::where('titik', $request->titik)->first();
+
+        if ($existingLokasi) {
+            // Update the existing location record
+            $existingLokasi->update([
+                'titik' => $request->titik,
+            ]);
+
+            return $this->success($existingLokasi, 'update data success');
+        } else {
+            // Create a new location record
+            $lokasi = new Lokasi();
+            $lokasi->titik = $request->titik;
+            $lokasi->save();
+            return $this->success($lokasi, 'save data success');
+        }
+    }
+
+
+
     /**
      * Display the specified resource.
      *

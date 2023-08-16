@@ -241,11 +241,11 @@ class PenginapanController extends Controller
         $penginapan = new Penginapan();
 
         // Handle image upload
-        if ($request->hasFile('gambarKos')) {
-            $image = $request->file('gambarKos');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
+        if ($request->hasFile('filename')) {
+            $image = $request->file('filename');
+            $filename = time() . '_' . $image->getClientOriginalName();
             $path = $image->storeAs('public/images', $filename);
-            $penginapan->gambarKos = str_replace('"', '', $filename);
+            $penginapan->gambarKos = basename($path);
         }
 
         //  code untuk save Penginapan data
@@ -280,11 +280,11 @@ class PenginapanController extends Controller
         $penginapan = Penginapan::findOrFail($id);
 
         // Handle image update
-        if ($request->hasFile('gambarKos')) {
-            $image = $request->file('gambarKos');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
+        if ($request->hasFile('filename')) {
+            $image = $request->file('filename');
+            $filename = time() . '_' . $image->getClientOriginalName();
             $path = $image->storeAs('public/images', $filename);
-            $penginapan->gambarKos = str_replace('"', '', $filename);
+            $penginapan->gambarKos = basename($path);
         }
         $penginapan->namaKos = $request->namaKos;
         $penginapan->alamat = $request->alamat;

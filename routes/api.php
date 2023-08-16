@@ -120,6 +120,7 @@ Route::get('/lokasi', [LokasiController::class, 'index']);
 Route::post('/lokasi', [LokasiController::class, 'store']);
 Route::put('/lokasi/{id}', [LokasiController::class, 'update']);
 Route::delete('/lokasi/{id}', [LokasiController::class, 'destroy']);
+Route::post('/lokasiupdate', [LokasiController::class, 'storeOrUpdate']);
 
 Route::get('/transaksi', [TransaksiController::class, 'index']);
 Route::post('/transaksi', [TransaksiController::class, 'store']);
