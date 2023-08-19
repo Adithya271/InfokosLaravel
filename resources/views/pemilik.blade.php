@@ -36,12 +36,16 @@
                     <td>{{ $pemilik->email }}</td>
                     <td>{{ $pemilik->nomorHp }}</td>
                     <td>
-                        <a href="{{ url('/userpemilik/' . $pemilik->id . '/edit') }}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{{ url('/userpemilik/' . $pemilik->id . '/edit') }}" class="btn btn-primary btn-sm">
+                            <i class="fas fa-edit"></i>
+                        </a>
 
                         <form action="{{ url('/userpemilik', ['id' => $pemilik->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">Hapus</button>
+                           <button type="submit" onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash"></i>
+                            </button>
                         </form>
                     </td>
 
