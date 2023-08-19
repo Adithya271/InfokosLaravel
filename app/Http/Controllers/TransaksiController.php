@@ -44,6 +44,21 @@ class TransaksiController extends Controller
         //
     }
 
+    public function search(Request $request)
+    {
+        $searchQuery = $request->input('search');
+        $limit = $request->limit ?: 10;
+
+        $transaksi = Transaksi::where('namaPencari', 'like', '%' . $searchQuery . '%')
+            ->paginate($limit);
+
+        if ($request->wantsJson()) {
+            return $this->success($transaksi, 'get records data success');
+        }
+
+        return view('transaksi', compact('transaksi', 'searchQuery'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
