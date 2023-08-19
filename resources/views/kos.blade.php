@@ -20,6 +20,7 @@
                     <th scope="col">Alamat</th>
                     <th scope="col">Tipe</th>
                     <th scope="col">Harga</th>
+                    <th scope="col">Jumlah Kamar</th>
                     <th scope="col">Status Disetujui</th>
                     <th scope="col">Aksi</th>
                     <th scope="col">Hapus</th>
@@ -41,6 +42,7 @@
                     <td>{{ $item->alamat }}</td>
                     <td>{{ $item->tipe }}</td>
                     <td>{{ $item->harga }}</td>
+                    <td>{{ $item->jlhKamar }}</td>
                     <td>
                         @if ($item->disetujui == 0)
                             Ya
