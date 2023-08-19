@@ -12,6 +12,7 @@ use App\Http\Controllers\PenginapanController;
 use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\UserPemilikController;
 use App\Http\Controllers\UserPencariController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Resources\PaginationResource;
@@ -62,6 +63,10 @@ Route::group(['middleware' => 'useradmin'], function () {
     Route::delete('/iklan/{id}', [IklanController::class, 'destroy'])->name('iklan.destroy');
     Route::get('/iklan', [IklanController::class, 'index'])->name('iklan.index');
     Route::post('/iklan', [IklanController::class, 'store'])->name('iklan.store');
+
+    Route::delete('/transaksi/{id}', [TransaksiController::class, 'destroy'])->name('transaksi.destroy');
+    Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
+    Route::get('/searchtransaksi', [TransaksiController::class, 'search'])->name('searchtransaksi');
 
     Route::get('/logout', [AuthController::class, 'logoutadmin'])->name('logout');
 

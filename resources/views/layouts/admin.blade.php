@@ -69,6 +69,11 @@
                     <i class="fas fa-fw fa-flag"></i>
                     <span>Iklan</span></a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/transaksi">
+                    <i class="fas fa-fw fa-flag"></i>
+                    <span>Transaksi</span></a>
+            </li>
         </ul>
 
         <!-- End of Sidebar -->
