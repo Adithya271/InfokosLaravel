@@ -71,7 +71,7 @@
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/transaksi">
-                    <i class="fas fa-fw fa-money"></i>
+                    <i class="fas fa-money-bill-alt"></i>
                     <span>Transaksi</span></a>
             </li>
         </ul>

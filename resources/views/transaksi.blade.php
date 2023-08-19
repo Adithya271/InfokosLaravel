@@ -10,7 +10,7 @@
             <button type="submit" class="btn btn-primary mt-2">Search</button>
         </div>
     </form>
-     
+
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead class="thead-dark">
@@ -35,8 +35,8 @@
                     <td>{{ $transaksi->noTransaksi }}</td>
                     <td>{{ $transaksi->tglTransaksi }}</td>
                     <td>{{ $transaksi->namaPencari }}</td>
-                    <td>{{ $transaksi->kosId }}</td>
-                    <td>{{ $transaksi->pemilikId }}</td>
+                    <td>{{ $transaksi->penginapans[0]->namaKos }}</td>
+                    <td>{{ $transaksi->user_pemiliks[0]->nama }}</td>
                     <td>{{ $transaksi->jlhKamar }}</td>
                     <td>{{ $transaksi->totalBayar }}</td>
                     <td>{{ $transaksi->statusTransaksi }}</td>
