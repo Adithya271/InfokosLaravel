@@ -33,9 +33,7 @@ class IklanController extends Controller
         if ($request->wantsJson()) {
         return $this->success($data, 'get records data success');
     }
-
         return view('iklan', $data);
-
 
     }
 
