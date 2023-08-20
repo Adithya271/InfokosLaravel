@@ -65,6 +65,7 @@ class IklanController extends Controller
         }
 
         $iklan->save();
+        session()->flash('tambah_success', 'Data berhasil ditambahkan');
         return $this->success($iklan, 'save data success');
     }
 

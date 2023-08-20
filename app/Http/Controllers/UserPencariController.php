@@ -140,6 +140,8 @@ class UserPencariController extends Controller
         $userpencari->email_verified_at = $request->email_verified_at;
         $userpencari->role = 'pencari';
         $userpencari->save();
+
+        session()->flash('tambah_success', 'Data berhasil ditambahkan');
         return $this->success($userpencari, 'save data success');
     }
 
@@ -202,6 +204,7 @@ class UserPencariController extends Controller
         $userpencari->role = 'pencari';
         $userpencari->save();
 
+        session()->flash('edit_success', 'Data berhasil diedit');
         return redirect('/userpencari')->with('success', 'Update data success');
     }
 

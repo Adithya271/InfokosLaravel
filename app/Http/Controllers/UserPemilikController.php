@@ -159,6 +159,7 @@ class UserPemilikController extends Controller
         $userpemilik->role = 'pemilik';
         $userpemilik->save();
 
+        session()->flash('tambah_success', 'Data berhasil ditambahkan');
         return $this->success($userpemilik, 'save data success');
     }
 
@@ -212,6 +213,7 @@ class UserPemilikController extends Controller
         $userpemilik->role = 'pemilik';
         $userpemilik->save();
 
+        session()->flash('edit_success', 'Data berhasil diedit');
         return redirect('/userpemilik')->with('success', 'Update data success');
     }
 

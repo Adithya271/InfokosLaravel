@@ -53,6 +53,16 @@
                 @endforeach
             </tbody>
         </table>
+         @if(session('tambah_success'))
+            <div class="alert alert-success">
+                {{ session('tambah_success') }}
+            </div>
+        @endif
+         @if(session('edit_success'))
+            <div class="alert alert-success">
+                {{ session('edit_success') }}
+            </div>
+        @endif
          @if(session('delete_success'))
             <div class="alert alert-success">
                 {{ session('delete_success') }}

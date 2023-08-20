@@ -35,8 +35,16 @@
                     <td>{{ $transaksi->noTransaksi }}</td>
                     <td>{{ $transaksi->tglTransaksi }}</td>
                     <td>{{ $transaksi->namaPencari }}</td>
-                    <td>{{ $transaksi->penginapans[0]->namaKos }}</td>
-                    <td>{{ $transaksi->user_pemiliks[0]->nama }}</td>
+                    <td>
+                        @foreach($item->penginapans as $penginapan)
+                            {{ $penginapan->namaKos }}<br>
+                        @endforeach
+                    </td>
+                    <td>
+                        @foreach($item->user_pemiliks as $user_pemilik)
+                            {{ $user_pemilik->nama }}<br>
+                        @endforeach
+                    </td>
                     <td>{{ $transaksi->jlhKamar }}</td>
                     <td>{{ $transaksi->totalBayar }}</td>
                     <td>{{ $transaksi->statusTransaksi }}</td>
