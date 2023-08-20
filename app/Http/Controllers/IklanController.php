@@ -15,6 +15,7 @@ class IklanController extends Controller
         $gambar = $request->gambar;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
+        $iklanCount = Iklan::count();
 
         $iklan = Iklan::where(function ($f) use ($gambar) {
             if ($gambar && $gambar != '' && $gambar != 'null') {
@@ -22,8 +23,10 @@ class IklanController extends Controller
             }
         })
 
+
             ->orderBy($orderCol, $orderType)->paginate($limit);
 
+        $data['iklanCount'] = $iklanCount;
         $data['paging'] = new PaginationResource($iklan);
         $data['records'] = $iklan->items();
 
