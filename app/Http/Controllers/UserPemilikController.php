@@ -224,6 +224,7 @@ class UserPemilikController extends Controller
     public function destroy($id)
     {
         UserPemilik::findOrFail($id)->delete();
+        session()->flash('delete_success', 'Data berhasil dihapus');
         return $this->success(null, 'delete data success');
     }
 }

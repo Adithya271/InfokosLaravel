@@ -101,6 +101,7 @@ class IklanController extends Controller
     public function destroy($id)
     {
         Iklan::findOrFail($id)->delete();
+        session()->flash('delete_success', 'Data berhasil dihapus');
         return $this->success(null, 'delete data success');
     }
 }

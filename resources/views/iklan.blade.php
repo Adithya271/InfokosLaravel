@@ -54,6 +54,11 @@
                 @endforeach
             </tbody>
         </table>
+         @if(session('delete_success'))
+            <div class="alert alert-success">
+                {{ session('delete_success') }}
+            </div>
+        @endif
     </div>
 </div>
 

@@ -178,6 +178,7 @@ class TransaksiController extends Controller
     public function destroy($id)
     {
         Transaksi::findOrFail($id)->delete();
+        session()->flash('delete_success', 'Data berhasil dihapus');
         return $this->success(null, 'delete data success');
     }
 }

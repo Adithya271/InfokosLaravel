@@ -44,7 +44,7 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i> 
+                                <i class="fas fa-trash"></i>
                             </button>
                         </form>
                     </td>
@@ -52,6 +52,11 @@
                 @endforeach
             </tbody>
         </table>
+         @if(session('delete_success'))
+            <div class="alert alert-success">
+                {{ session('delete_success') }}
+            </div>
+        @endif
     </div>
 </div>
 

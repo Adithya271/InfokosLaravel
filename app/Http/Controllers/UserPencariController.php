@@ -215,6 +215,7 @@ class UserPencariController extends Controller
     public function destroy($id)
     {
         UserPencari::findOrFail($id)->delete();
+        session()->flash('delete_success', 'Data berhasil dihapus');
         return $this->success(null, 'delete data success');
     }
 }
