@@ -49,7 +49,6 @@
         </div>
                 <div class="card-body">
                     <a href="/iklan" class="btn btn-primary btn-block text-white">Iklan</a>
-                     <p class="mt-2">Total Iklan: {{ $iklanCount }}</p>
                 </div>
             </div>
         </div>
