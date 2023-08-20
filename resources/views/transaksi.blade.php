@@ -28,45 +28,42 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($transaksi as $transaksi)
+                @foreach($transaksi as $transaksiItem)
                 <tr>
-                     <td>{{ $transaksi->id }}</td>
-
-                    <td>{{ $transaksi->noTransaksi }}</td>
-                    <td>{{ $transaksi->tglTransaksi }}</td>
-                    <td>{{ $transaksi->namaPencari }}</td>
+                    <td>{{ $transaksiItem->id }}</td>
+                    <td>{{ $transaksiItem->noTransaksi }}</td>
+                    <td>{{ $transaksiItem->tglTransaksi }}</td>
+                    <td>{{ $transaksiItem->namaPencari }}</td>
                     <td>
-                        @foreach($item->penginapans as $penginapan)
+                        @foreach($transaksiItem->penginapans as $penginapan)
                             {{ $penginapan->namaKos }}<br>
                         @endforeach
                     </td>
                     <td>
-                        @foreach($item->user_pemiliks as $user_pemilik)
+                        @foreach($transaksiItem->user_pemiliks as $user_pemilik)
                             {{ $user_pemilik->nama }}<br>
                         @endforeach
                     </td>
-                    <td>{{ $transaksi->jlhKamar }}</td>
-                    <td>{{ $transaksi->totalBayar }}</td>
-                    <td>{{ $transaksi->statusTransaksi }}</td>
+                    <td>{{ $transaksiItem->jlhKamar }}</td>
+                    <td>{{ $transaksiItem->totalBayar }}</td>
+                    <td>{{ $transaksiItem->statusTransaksi }}</td>
                     <td>
-
-                        <form action="{{ url('/transaksi', ['id' => $transaksi->id]) }}" method="POST">
+                        <form action="{{ url('/transaksi', ['id' => $transaksiItem->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                           <button type="submit" onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">
+                            <button type="submit" onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
                     </td>
-
                 </tr>
                 @endforeach
             </tbody>
         </table>
-         @if(session('delete_success'))
-            <div class="alert alert-success">
-                {{ session('delete_success') }}
-            </div>
+        @if(session('delete_success'))
+        <div class="alert alert-success">
+            {{ session('delete_success') }}
+        </div>
         @endif
     </div>
 </div>
