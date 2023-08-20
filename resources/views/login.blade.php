@@ -30,7 +30,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Selamat Datang!</h1>
                                      <div class="sidebar-brand-icon">
-                                        <img src="{{ asset('assets/img/logo_infokos.png') }}" alt="Logo" width="100" height="90">
+                                        <img src="{{ asset('assets/img/logo_infokos.png') }}" alt="Logo" width="150" height="90">
                                     </div>
                                     <h3 class="h4 text-gray-700 mb-4">Silahkan Login Terlebih Dahulu</h3>
 
