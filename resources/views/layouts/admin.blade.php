@@ -30,11 +30,11 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-        <a class="sidebar-brand d-flex align-items-center justify-content-center">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <img src="{{ asset('assets/img/logo_infokos.png') }}" alt="Logo" width="30" height="30">
+              <a class="sidebar-brand d-flex flex-column align-items-center justify-content-center">
+            <div class="sidebar-brand-icon">
+                <img src="{{ asset('assets/img/logo_infokos.png') }}" alt="Logo" width="130" height="50">
             </div>
             <div class="sidebar-brand-text mx-3">Admin Infokos</div>
         </a>
