@@ -10,6 +10,11 @@
             <button type="submit" class="btn btn-primary mt-2">Search</button>
         </div>
     </form>
+     @if(session('success'))
+        <div class="alert alert-success mt-4">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead class="thead-dark">
@@ -77,6 +82,11 @@
             </tbody>
         </table>
     </div>
+     @if(isset($deleteSuccessMessage))
+        @php
+            session(['success' => $deleteSuccessMessage]);
+        @endphp
+    @endif
 </div>
 
 @endsection
