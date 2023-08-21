@@ -152,7 +152,7 @@ class TransaksiController extends Controller
         return $this->success($transaksi, 'update data success');
     }
 
-    public function updateJlhKamar($id)
+    public function transaksiSetuju($id)
     {
         $transaksi = Transaksi::findOrFail($id);
         $penginapanId = $transaksi->kosId;
@@ -163,6 +163,38 @@ class TransaksiController extends Controller
         $penginapan->save();
 
         $transaksi->statusTransaksi = 'disetujui';
+        $transaksi->save();
+
+        return response()->json(['success' => true]);
+    }
+
+    public function transaksiBatal($id)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+        $penginapanId = $transaksi->kosId;
+        $jumlahKamarDipesan = $transaksi->jlhKamar;
+
+        $penginapan = Penginapan::findOrFail($penginapanId);
+        $penginapan->jlhKamar += $jumlahKamarDipesan;
+        $penginapan->save();
+
+        $transaksi->statusTransaksi = 'batal';
+        $transaksi->save();
+
+        return response()->json(['success' => true]);
+    }
+
+    public function batalBooking($id)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+        $penginapanId = $transaksi->kosId;
+
+
+        $penginapan = Penginapan::findOrFail($penginapanId);
+
+        $penginapan->save();
+
+        $transaksi->statusTransaksi = 'dibatalkan pelanggan';
         $transaksi->save();
 
         return response()->json(['success' => true]);
