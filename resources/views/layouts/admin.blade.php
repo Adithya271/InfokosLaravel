@@ -65,14 +65,14 @@
                     <span>Penginapan</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/iklan">
-                    <i class="fas fa-fw fa-flag"></i>
-                    <span>Iklan</span></a>
-            </li>
-            <li class="nav-item active">
                 <a class="nav-link" href="/transaksi">
                     <i class="fas fa-money-bill-alt"></i>
                     <span>Transaksi</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/iklan">
+                    <i class="fas fa-fw fa-flag"></i>
+                    <span>Iklan</span></a>
             </li>
         </ul>
 

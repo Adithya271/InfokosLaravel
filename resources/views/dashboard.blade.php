@@ -45,20 +45,20 @@
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                   <div class="text-center">
-            <i class="fas fa-flag fa-2x text-gray-300"></i>
+            <i class="fas fa-money-bill-alt fa-2x text-gray-300"></i>
         </div>
                 <div class="card-body">
-                    <a href="/iklan" class="btn btn-primary btn-block text-white">Iklan</a>
+                    <a href="/transaksi" class="btn btn-primary btn-block text-white">Transaksi</a>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                   <div class="text-center">
-            <i class="fas fa-money-bill-alt fa-2x text-gray-300"></i>
+            <i class="fas fa-flag fa-2x text-gray-300"></i>
         </div>
                 <div class="card-body">
-                    <a href="/transaksi" class="btn btn-primary btn-block text-white">Transaksi</a>
+                    <a href="/iklan" class="btn btn-primary btn-block text-white">Iklan</a>
                 </div>
             </div>
         </div>

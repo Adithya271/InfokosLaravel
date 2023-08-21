@@ -7,7 +7,7 @@
     <form action="{{ route('searchpenginapan') }}" method="GET">
         <div class="form-group">
             <input type="text" name="search" class="form-control" placeholder="Search by Nama">
-            <button type="submit" class="btn btn-primary mt-2">Search</button>
+            <button type="submit" class="btn btn-primary mt-2">Cari</button>
         </div>
     </form>
 

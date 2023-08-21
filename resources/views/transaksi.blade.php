@@ -7,7 +7,7 @@
     <form action="{{ route('searchtransaksi') }}" method="GET">
         <div class="form-group">
             <input type="text" name="search" class="form-control" placeholder="Search by Nama">
-            <button type="submit" class="btn btn-primary mt-2">Search</button>
+            <button type="submit" class="btn btn-primary mt-2">Cari</button>
         </div>
     </form>
 
@@ -22,6 +22,9 @@
                     <th scope="col">Nama Penginapan</th>
                     <th scope="col">Nama Pemilik</th>
                     <th scope="col">Jumlah Kamar Dipesan</th>
+                    <th scope="col">Nama Pengirim</th>
+                    <th scope="col">Nomor Rekening</th>
+                    <th scope="col">JNama Bank</th>
                     <th scope="col">Total Bayar</th>
                     <th scope="col">Status Transaksi</th>
                     <th scope="col">Aksi</th>
