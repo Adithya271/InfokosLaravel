@@ -24,7 +24,7 @@
                     <th scope="col">Jumlah Kamar Dipesan</th>
                     <th scope="col">Nama Pengirim</th>
                     <th scope="col">Nomor Rekening</th>
-                    <th scope="col">JNama Bank</th>
+                    <th scope="col">Nama Bank</th>
                     <th scope="col">Total Bayar</th>
                     <th scope="col">Status Transaksi</th>
                     <th scope="col">Aksi</th>
@@ -48,6 +48,9 @@
                         @endforeach
                     </td>
                     <td>{{ $transaksiItem->jlhKamar }}</td>
+                    <td>{{ $transaksiItem->atasNama }}</td>
+                    <td>{{ $transaksiItem->noRek }}</td>
+                    <td>{{ $transaksiItem->namaBank }}</td>
                     <td>{{ $transaksiItem->totalBayar }}</td>
                     <td>{{ $transaksiItem->statusTransaksi }}</td>
                     <td>
