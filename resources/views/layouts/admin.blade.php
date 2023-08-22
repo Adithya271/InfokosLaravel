@@ -93,6 +93,11 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
+                    <button class="btn btn-link btn-sm" id="toggleSidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -161,25 +166,16 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('assets/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('assets/js/demo/chart-pie-demo.js') }}"></script>
+    
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Toggle sidebar button
-        const toggleSidebarButton = document.getElementById('toggleSidebar');
-        const wrapper = document.getElementById('wrapper');
-
-        toggleSidebarButton.addEventListener('click', function () {
-            wrapper.classList.toggle('toggled');
-        });
-
-        // flatpickr
         flatpickr('[data-input]', {
             enableTime: true,
             dateFormat: "Y-m-d H:i",
         });
     });
-</script>
-
+    </script>
 
 
 </body>

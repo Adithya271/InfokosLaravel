@@ -1750,6 +1750,10 @@ pre code {
     display: inline;
 }
 
+ul.navbar-nav.bg-gradient-primary.sidebar.toggled .hide-text {
+    display: inline;
+}
+
 
 .table-dark {
   color: #fff;
