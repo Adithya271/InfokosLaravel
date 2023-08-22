@@ -169,24 +169,22 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
+        // Toggle sidebar button
         const toggleSidebarButton = document.getElementById('toggleSidebar');
         const wrapper = document.getElementById('wrapper');
 
         toggleSidebarButton.addEventListener('click', function () {
             wrapper.classList.toggle('toggled');
         });
-        });
-    </script>
 
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
+        // flatpickr
         flatpickr('[data-input]', {
             enableTime: true,
             dateFormat: "Y-m-d H:i",
         });
     });
-    </script>
+</script>
+
 
 
 </body>

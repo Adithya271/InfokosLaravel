@@ -37,6 +37,7 @@ Route::post('loginpencari', [AuthController::class, 'loginpencari']);
 Route::post('loginadmin', [AuthController::class, 'loginadmin']);
 
 Route::middleware('auth:sanctum')->post('logout', [AuthController::class, 'logout']);
+
 //
 Route::post('/useradmin', [UserAdminController::class, 'store']);
 Route::put('/useradmin/{id}', [UserAdminController::class, 'update']);
@@ -126,7 +127,7 @@ Route::get('/transaksi', [TransaksiController::class, 'index']);
 Route::post('/transaksi', [TransaksiController::class, 'store']);
 Route::post('/transaksisetuju/{id}', [TransaksiController::class, 'transaksiSetuju']);
 Route::post('/batalbooking/{id}', [TransaksiController::class, 'batalBooking']);
-Route::post('/transaksibatal/{id}', [TransaksiController::class, 'transaksiBatal']);
+Route::post('/transaksibatal/{id}', [TransaksiController::class, 'transaksiBatal'])->name('transaksiBatal');
 Route::put('/transaksi/{id}', [TransaksiController::class, 'update']);
 Route::delete('/transaksi/{id}', [TransaksiController::class, 'destroy']);
 

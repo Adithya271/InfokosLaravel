@@ -56,14 +56,14 @@
                     <td>{{ $transaksiItem->statusTransaksi }}</td>
                     <td>
                         @if($transaksiItem->statusTransaksi === 'pending')
-                        <form action="{{ route('transaksisetuju', ['id' => $transaksiItem->id]) }}" method="POST">
+                        <form action="{{ route('transaksiSetuju', ['id' => $transaksiItem->id]) }}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-success btn-sm">
                                 Setujui Transaksi
                             </button>
                         </form>
                         @elseif($transaksiItem->statusTransaksi === 'mengajukan pembatalan')
-                        <form action="{{ route('transaksibatal', ['id' => $transaksiItem->id]) }}" method="POST">
+                        <form action="{{ route('transaksiBatal', ['id' => $transaksiItem->id]) }}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-danger btn-sm">
                                 Batalkan Transaksi
