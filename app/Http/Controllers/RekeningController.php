@@ -2,31 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserAdmin;
-use App\Http\Requests\UserAdminRequest;
+use App\Models\Rekening;
+use App\Http\Requests\RekeningRequest;
 use Illuminate\Http\Request;
 use App\Http\Resources\PaginationResource;
 use Illuminate\Support\Facades\Hash;
 
-class UserAdminController extends Controller
+class RekeningController extends Controller
 {
     public function index(Request $request)
     {
         $limit = $request->limit;
-        $email = $request->email;
+        $noRek = $request->noRek;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
 
-        $userAdmin = UserAdmin::where(function ($f) use ($email) {
-            if ($email && $email != '' && $email != 'null') {
-                $f->where('email', 'LIKE', '%' . $email . '%');
+        $rekening = Rekening::where(function ($f) use ($noRek) {
+            if ($noRek && $noRek != '' && $noRek != 'null') {
+                $f->where('noRek', 'LIKE', '%' . $noRek . '%');
             }
         })
 
             ->orderBy($orderCol, $orderType)->paginate($limit);
 
-        $data['paging'] = new PaginationResource($userAdmin);
-        $data['records'] = $userAdmin->items();
+        $data['paging'] = new PaginationResource($rekening);
+        $data['records'] = $rekening->items();
 
         return $this->success($data, 'get records data success');
     }
@@ -47,15 +47,15 @@ class UserAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserAdminRequest $request)
+    public function store(RekeningRequest $request)
     {
-        $userAdmin = new UserAdmin();
-        $userAdmin->email = $request->email;
-        $userAdmin->password = Hash::make($request->password);
-        $userAdmin->email_verified_at = $request->email_verified_at;
-        $userAdmin->role = 'admin';
-        $userAdmin->save();
-        return $this->success($userAdmin, 'save data success');
+        $rekening = new Rekening();
+        $rekening->namaBank = $request->namaBank;
+        $rekening->noRek = $request->noRek;
+        $rekening->atasNama = $request->atasNama;
+
+        $rekening->save();
+        return $this->success($rekening, 'save data success');
     }
 
     /**
@@ -66,8 +66,8 @@ class UserAdminController extends Controller
      */
     public function show($id)
     {
-        $userAdmin = UserAdmin::findOrFail($id);
-        return $this->success($userAdmin, 'get record success');
+        $rekening = Rekening::findOrFail($id);
+        return $this->success($rekening, 'get record success');
     }
 
     /**
@@ -88,16 +88,15 @@ class UserAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserAdminRequest $request, $id)
+    public function update(RekeningRequest $request, $id)
     {
 
-        $userAdmin = UserAdmin::findOrFail($id);
-        $userAdmin->email = $request->email;
-        $userAdmin->password = Hash::make($request->password);
-        $userAdmin->email_verified_at = $request->email_verified_at;
-        $userAdmin->role = 'admin';
-        $userAdmin->save();
-        return $this->success($userAdmin, 'update data success');
+        $rekening = Rekening::findOrFail($id);
+        $rekening->namaBank = $request->namaBank;
+        $rekening->noRek = $request->noRek;
+        $rekening->atasNama = $request->atasNama;
+        $rekening->save();
+        return $this->success($rekening, 'update data success');
     }
 
     /**
@@ -108,7 +107,7 @@ class UserAdminController extends Controller
      */
     public function destroy($id)
     {
-        UserAdmin::findOrFail($id)->delete();
+        Rekening::findOrFail($id)->delete();
         return $this->success(null, 'delete data success');
     }
 }

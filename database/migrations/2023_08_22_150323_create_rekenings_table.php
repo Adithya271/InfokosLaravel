@@ -13,18 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_pemiliks', function (Blueprint $table) {
+        Schema::create('rekenings', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('nomorHp');
-            $table->string('profilGambar');
-            $table->string('email')->unique();
             $table->string('namaBank');
             $table->integer('noRek');
             $table->string('atasNama');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -36,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_pemiliks');
+        Schema::dropIfExists('rekenings');
     }
 };
