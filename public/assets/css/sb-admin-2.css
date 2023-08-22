@@ -1750,7 +1750,7 @@ pre code {
     display: inline;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 767px) {
     #toggleSidebar {
         display: block;
     }
