@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <h1 class="mb-4">Data Transaksi</h1>
+    <h1 class="mb-4">Kelola Transaksi</h1>
     <form action="{{ route('searchtransaksi') }}" method="GET">
         <div class="form-group">
             <input type="text" name="search" class="form-control" placeholder="Search by Nama">
@@ -28,6 +28,7 @@
                     <th scope="col">Total Bayar</th>
                     <th scope="col">Status Transaksi</th>
                     <th scope="col">Aksi</th>
+                    <th scope="col">Hapus</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,6 +54,23 @@
                     <td>{{ $transaksiItem->namaBank }}</td>
                     <td>{{ $transaksiItem->totalBayar }}</td>
                     <td>{{ $transaksiItem->statusTransaksi }}</td>
+                    <td>
+                        @if($transaksiItem->statusTransaksi === 'pending')
+                        <form action="{{ route('transaksiSetuju', ['id' => $transaksiItem->id]) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-success btn-sm">
+                                Setujui Transaksi
+                            </button>
+                        </form>
+                        @elseif($transaksiItem->statusTransaksi === 'mengajukan pembatalan')
+                        <form action="{{ route('transaksiBatal', ['id' => $transaksiItem->id]) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                Batalkan Transaksi
+                            </button>
+                        </form>
+                        @endif
+                    </td>
                     <td>
                         <form action="{{ url('/transaksi', ['id' => $transaksiItem->id]) }}" method="POST">
                             @csrf

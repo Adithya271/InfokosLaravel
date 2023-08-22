@@ -47,7 +47,8 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span class="hide-text">Dashboard</span>
+                </a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/userpemilik">
@@ -91,6 +92,11 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
+
+                    <button class="btn btn-link btn-sm" id="toggleSidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -160,6 +166,18 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('assets/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('assets/js/demo/chart-pie-demo.js') }}"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleSidebarButton = document.getElementById('toggleSidebar');
+        const wrapper = document.getElementById('wrapper');
+
+        toggleSidebarButton.addEventListener('click', function () {
+            wrapper.classList.toggle('toggled');
+        });
+        });
+    </script>
+
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {

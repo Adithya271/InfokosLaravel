@@ -1742,6 +1742,15 @@ pre code {
   border-color: #e3e6f0;
 }
 
+.hide-text {
+    display: none;
+}
+
+#wrapper.toggled .hide-text {
+    display: inline;
+}
+
+
 .table-dark {
   color: #fff;
   background-color: #5a5c69;
