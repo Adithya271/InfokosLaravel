@@ -1742,24 +1742,17 @@ pre code {
   border-color: #e3e6f0;
 }
 
-.hide-text {
-    display: none;
-}
-
-#wrapper.toggled .hide-text {
-    display: inline;
-}
-
-@media (min-width: 767px) {
-    #toggleSidebar {
-        display: block;
-    }
-}
-
 .table-dark {
   color: #fff;
   background-color: #5a5c69;
 }
+
+ #sidebarToggleTop {
+     position: absolute;
+     top: 0;
+     left: 15px;
+     z-index: 999;
+ }
 
 .table-dark th,
 .table-dark td,
