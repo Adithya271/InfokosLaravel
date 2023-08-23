@@ -57,9 +57,9 @@
                                     </div>
                                     <div class="modal-body">
                                         @foreach($transaksiItem->user_pemiliks as $user_pemilik)
-                                            <strong>Nama Pemilik:</strong> {{ $user_pemilik->nama }}<br>
-                                            <strong>Nama Bank:</strong> {{ $user_pemilik->namaBank }}<br>
-                                            <strong>Nomor Rekening Pemilik:</strong> {{ $user_pemilik->noRek }}<br>
+                                            <strong>Nama Pemilik :</strong> {{ $user_pemilik->nama }}<br>
+                                            <strong>Nama Bank :</strong> {{ $user_pemilik->namaBank }}<br>
+                                            <strong>Nomor Rekening Pemilik :</strong> {{ $user_pemilik->noRek }}<br>
                                         @endforeach
                                     </div>
                                     <div class="modal-footer">
@@ -83,12 +83,10 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body">
-                                    @foreach($transaksiItem->user_pencaris as $user_pencari)
-                                            <strong>Nama Pemilik:</strong> {{ $user_pencari->nama }}<br>
-                                            <strong>Nama Bank:</strong> {{ $user_pencari->namaBank }}<br>
-                                            <strong>Nomor Rekening Pemilik:</strong> {{ $user_pencari->noRek }}<br>
-                                    @endforeach
+                                 <div class="modal-body">
+                                    <strong>Nama Pengirim :</strong> {{ $transaksiItem->atasNama }}<br>
+                                    <strong>Nama Bank :</strong> {{ $transaksiItem->namaBank }}<br>
+                                    <strong>Nomor Rekening Pengirim:</strong> {{ $transaksiItem->noRek }}<br>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
