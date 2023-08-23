@@ -78,7 +78,7 @@
                             <form action="{{ route('transaksiBatal', ['id' => $transaksiItem->id]) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-sm">
-                                    Batalkan Transaksi
+                                    Batalkan Transaksi dan Kembalikan Uang Pemesan
                                 </button>
                             </form>
                         @endif

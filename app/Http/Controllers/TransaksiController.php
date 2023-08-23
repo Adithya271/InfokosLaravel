@@ -162,7 +162,7 @@ class TransaksiController extends Controller
         $penginapan->jlhKamar -= $jumlahKamarDipesan;
         $penginapan->save();
 
-        $transaksi->statusTransaksi = 'disetujui';
+        $transaksi->statusTransaksi = 'sukses';
         $transaksi->save();
 
         return response()->json(['success' => true]);
