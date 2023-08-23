@@ -106,11 +106,11 @@ class AuthController extends Controller
             $user->email_verified_at = Carbon::now();
             $user->save();
 
-            return view('confirmation.success', ['message' => 'Verifikasi email berhasil']);
+            return view('confirmation.success', ['message' => 'Verifikasi email telah berhasil, silahkan login menggunakan email ini']);
         }
         Log::info('User: ' . $user);
 
-        return view('confirmation.failure', ['message' => 'Verifikasi gagal']);
+        return view('confirmation.failure', ['message' => 'Verifikasi gagal, terjadi kesalahan']);
     }
 
     public function confirmationpemilik(Request $request, $id)
@@ -126,11 +126,11 @@ class AuthController extends Controller
             $user->email_verified_at = Carbon::now();
             $user->save();
 
-            return view('confirmation.success', ['message' => 'Verifikasi email berhasil']);
+            return view('confirmation.success', ['message' => 'Verifikasi email telah berhasil, silahkan login menggunakan email ini']);
         }
         Log::info('User: ' . $user);
 
-        return view('confirmation.failure', ['message' => 'Verifikasi gagal']);
+        return view('confirmation.failure', ['message' => 'Verifikasi gagal, terjadi kesalahan']);
     }
 
     public function loginpemilik(Request $request)
