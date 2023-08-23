@@ -60,7 +60,6 @@
                                             <strong>Nama Pemilik:</strong> {{ $user_pemilik->nama }}<br>
                                             <strong>Nama Bank:</strong> {{ $user_pemilik->namaBank }}<br>
                                             <strong>Nomor Rekening Pemilik:</strong> {{ $user_pemilik->noRek }}<br>
-                                            <hr>
                                         @endforeach
                                     </div>
                                     <div class="modal-footer">
@@ -79,15 +78,17 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="pengirimModalLabel_{{ $transaksiItem->id }}">Informasi Pengirim</h5>
+                                    <h5 class="modal-title" id="pengirimModalLabel_{{ $transaksiItem->id }}">Informasi Rekening Pengirim</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <strong>Nama Pengirim:</strong> {{ $transaksiItem->atasNama }}<br>
-                                    <strong>Nomor Rekening:</strong> {{ $transaksiItem->noRek }}<br>
-                                    <strong>Nama Bank:</strong> {{ $transaksiItem->namaBank }}<br>
+                                    @foreach($transaksiItem->user_pencaris as $user_pencari)
+                                            <strong>Nama Pemilik:</strong> {{ $user_pencari->nama }}<br>
+                                            <strong>Nama Bank:</strong> {{ $user_pencari->namaBank }}<br>
+                                            <strong>Nomor Rekening Pemilik:</strong> {{ $user_pencari->noRek }}<br>
+                                    @endforeach
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
