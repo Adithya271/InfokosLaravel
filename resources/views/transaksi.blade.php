@@ -42,9 +42,8 @@
                         @endforeach
                     </td>
                     <td>
-
                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#pemilikModal_{{ $transaksiItem->id }}">
-                            Lihat Informasi Rekening Pemilik
+                            View
                         </button>
 
                         <div class="modal fade" id="pemilikModal_{{ $transaksiItem->id }}" tabindex="-1" role="dialog" aria-labelledby="rekeningModalLabel_{{ $transaksiItem->id }}" aria-hidden="true">
@@ -72,8 +71,9 @@
                         </div>
                     </td>
                     <td>{{ $transaksiItem->jlhKamar }}</td>
+                    <td>
                      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#pengirimModal_{{ $transaksiItem->id }}">
-                            Lihat Informasi Pengirim Pencari
+                            View
                     </button>
                     <div class="modal fade" id="pengirimModal_{{ $transaksiItem->id }}" tabindex="-1" role="dialog" aria-labelledby="pengirimModalLabel_{{ $transaksiItem->id }}" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -95,6 +95,7 @@
                             </div>
                         </div>
                     </div>
+                    </td>
                     <td>{{ $transaksiItem->totalBayar }}</td>
                     <td>{{ $transaksiItem->statusTransaksi }}</td>
                    <td>
