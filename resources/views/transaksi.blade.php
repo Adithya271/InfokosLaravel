@@ -11,7 +11,7 @@
         </div>
     </form>
 
-    <div class="table-responsive">
+  <div class="table-responsive">
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
@@ -20,13 +20,9 @@
                     <th scope="col">Tanggal Transaksi</th>
                     <th scope="col">Nama Pemesan</th>
                     <th scope="col">Nama Penginapan</th>
-                    <th scope="col">Nama Pemilik</th>
-                    <th scope="col">Nama Bank Pemilik</th>
-                    <th scope="col">Nomor Rekening Pemilik</th>
+                    <th scope="col">Informasi Rekening Pemilik</th>
                     <th scope="col">Jumlah Kamar Dipesan</th>
-                    <th scope="col">Nama Pengirim</th>
-                    <th scope="col">Nomor Rekening</th>
-                    <th scope="col">Nama Bank</th>
+                    <th scope="col">Informasi Rekening Pencari</th>
                     <th scope="col">Total Bayar</th>
                     <th scope="col">Status Transaksi</th>
                     <th scope="col">Aksi</th>
@@ -46,19 +42,55 @@
                         @endforeach
                     </td>
                     <td>
-                        @foreach($transaksiItem->user_pemiliks as $user_pemilik)
-                            {{ $user_pemilik->nama }}<br>
-                        @endforeach
-                    </td>
-                    <td>
-                        @foreach($transaksiItem->user_pemiliks as $user_pemilik)
-                            {{ $user_pemilik->namaBank }}<br>
-                        @endforeach
-                    </td>
-                    <td>
-                        @foreach($transaksiItem->user_pemiliks as $user_pemilik)
-                            {{ $user_pemilik->noRek }}<br>
-                        @endforeach
+
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#pemilikModal_{{ $transaksiItem->id }}">
+                            Lihat Informasi Rekening Pemilik
+                        </button>
+                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#pengirimModal_{{ $transaksiItem->id }}">
+                            Lihat Informasi Pengirim Pencari
+                        </button>
+
+
+                        <div class="modal fade" id="pemilikModal_{{ $transaksiItem->id }}" tabindex="-1" role="dialog" aria-labelledby="rekeningModalLabel_{{ $transaksiItem->id }}" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="rekeningModalLabel_{{ $transaksiItem->id }}">Informasi Rekening Pemilik</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <strong>Nama Pemilik:</strong> {{ $user_pemilik->nama }}<br>
+                                        <strong>Nama Bank:</strong> {{ $user_pemilik->namaBank }}<br>
+                                        <strong>Nomor Rekening Pemilik:</strong> {{ $user_pemilik->noRek }}<br>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="pengirimModal_{{ $transaksiItem->id }}" tabindex="-1" role="dialog" aria-labelledby="pengirimModalLabel_{{ $transaksiItem->id }}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="pengirimModalLabel_{{ $transaksiItem->id }}">Informasi Pengirim</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <strong>Nama Pengirim:</strong> {{ $transaksiItem->atasNama }}<br>
+                                    <strong>Nomor Rekening:</strong> {{ $transaksiItem->noRek }}<br>
+                                    <strong>Nama Bank:</strong> {{ $transaksiItem->namaBank }}<br>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </td>
                     <td>{{ $transaksiItem->jlhKamar }}</td>
                     <td>{{ $transaksiItem->atasNama }}</td>
