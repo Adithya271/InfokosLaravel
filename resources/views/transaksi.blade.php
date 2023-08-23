@@ -50,7 +50,6 @@
                             Lihat Informasi Pengirim Pencari
                         </button>
 
-
                         <div class="modal fade" id="pemilikModal_{{ $transaksiItem->id }}" tabindex="-1" role="dialog" aria-labelledby="rekeningModalLabel_{{ $transaksiItem->id }}" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -61,9 +60,12 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <strong>Nama Pemilik:</strong> {{ $user_pemilik->nama }}<br>
-                                        <strong>Nama Bank:</strong> {{ $user_pemilik->namaBank }}<br>
-                                        <strong>Nomor Rekening Pemilik:</strong> {{ $user_pemilik->noRek }}<br>
+                                        @foreach($transaksiItem->user_pemiliks as $user_pemilik)
+                                            <strong>Nama Pemilik:</strong> {{ $user_pemilik->nama }}<br>
+                                            <strong>Nama Bank:</strong> {{ $user_pemilik->namaBank }}<br>
+                                            <strong>Nomor Rekening Pemilik:</strong> {{ $user_pemilik->noRek }}<br>
+                                            <hr>
+                                        @endforeach
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -71,6 +73,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="modal fade" id="pengirimModal_{{ $transaksiItem->id }}" tabindex="-1" role="dialog" aria-labelledby="pengirimModalLabel_{{ $transaksiItem->id }}" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
