@@ -66,28 +66,21 @@
                     <td>{{ $transaksiItem->namaBank }}</td>
                     <td>{{ $transaksiItem->totalBayar }}</td>
                     <td>{{ $transaksiItem->statusTransaksi }}</td>
-                    <td>
+                   <td>
                         @if($transaksiItem->statusTransaksi === 'pending')
-                        <form action="{{ route('transaksiSetuju', ['id' => $transaksiItem->id]) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-success btn-sm">
-                                Setujui Transaksi
-                            </button>
-                        </form>
-                        @elseif($transaksiItem->statusTransaksi === 'dibatalkan pemesan')
-                        <form action="{{ route('transaksiBatal', ['id' => $transaksiItem->id]) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                Batalkan Transaksi
-                            </button>
-                        </form>
-                        @elseif($transaksiItem->statusTransaksi === 'dibatalkan pemilik')
-                        <form action="{{ route('transaksiBatal', ['id' => $transaksiItem->id]) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                Batalkan Transaksi
-                            </button>
-                        </form>
+                            <form action="{{ route('transaksiSetuju', ['id' => $transaksiItem->id]) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-success btn-sm">
+                                    Setujui Transaksi
+                                </button>
+                            </form>
+                        @elseif($transaksiItem->statusTransaksi === 'dibatalkan pemesan' || $transaksiItem->statusTransaksi === 'dibatalkan pemilik')
+                            <form action="{{ route('transaksiBatal', ['id' => $transaksiItem->id]) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    Batalkan Transaksi
+                                </button>
+                            </form>
                         @endif
                     </td>
                     <td>
