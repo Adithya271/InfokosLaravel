@@ -1,12 +1,12 @@
-<x-mail::message>
+<x-message>
     # Introduction
-    Dear {{$user->nama}}, silahkan klik link dibawah ini untuk konfirmasi pendaftaran.
+    Dear {{ $user->nama }}, silahkan klik link dibawah ini untuk konfirmasi pendaftaran.
 
-    <x-mail::button :url="$url">
+    <x-button :url="$url">
         Konfirmasi
-    </x-mail::button>
+    </x-button>
 
     <hr>
     Thanks,<br>
     {{ config('app.name') }}
-</x-mail::message>
+</x-message>

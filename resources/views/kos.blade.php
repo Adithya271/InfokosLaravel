@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-   <h1 class="mb-4">Manage Kos dan Penginapan</h1>
+   <h1 class="mb-4">Kelola Kos dan Penginapan</h1>
     <form action="{{ route('searchpenginapan') }}" method="GET">
         <div class="form-group">
             <input type="text" name="search" class="form-control" placeholder="Search by Nama">

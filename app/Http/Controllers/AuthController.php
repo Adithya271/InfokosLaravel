@@ -39,23 +39,18 @@ class AuthController extends Controller
             ]);
         }
 
-        // Generate a unique signature
         $signature = Str::uuid();
 
-        // Create the user record
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $input['remember_token'] = $signature;
         $input['role'] = 'pemilik';
         $userpemilik = UserPemilik::create($input);
 
-        // Generate the confirmation URL
         $confirmationUrl = url('/api/registerpemilik/confirmationpemilik/' . $userpemilik->id) . '?signature=' . $signature;
 
-        // Send confirmation email
         Mail::to($userpemilik->email)->queue(new MailRegisterPemilikConfirm($userpemilik, $confirmationUrl));
 
-        // Return the response
         return response()->json([
             'success' => true,
             'message' => 'Sukses register, silahkan cek email anda untuk verifikasi',
@@ -71,7 +66,7 @@ class AuthController extends Controller
         $user = UserPemilik::where('id', $id)->where('remember_token', $key)->first();
 
         if ($user) {
-            // Update the email_verified_at field to mark the email as verified
+
             $user->email_verified_at = Carbon::now();
             $user->save();
 
@@ -106,24 +101,20 @@ class AuthController extends Controller
                 'data' => $validator->errors()
             ]);
         }
-        // Generate a unique signature
+
         $signature = Str::uuid();
         Log::info('Generated Signature: ' . $signature);
 
-        // Create the user record
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $input['remember_token'] = $signature;
         $input['role'] = 'pencari';
         $userpencari = UserPencari::create($input);
 
-        // Generate the confirmation URL
         $confirmationUrl = url('/api/registerpencari/confirmation/' . $userpencari->id) . '?signature=' . $signature;
 
-        // Send confirmation email
         Mail::to($userpencari->email)->queue(new MailRegisterPencariConfirm($userpencari, $confirmationUrl));
 
-        // Return the response
         return response()->json([
             'success' => true,
             'message' => 'Sukses register, silahkan cek email anda untuk verifikasi',
@@ -140,24 +131,16 @@ class AuthController extends Controller
         $user = UserPencari::where('id', $id)->where('remember_token', $key)->first();
 
         if ($user) {
-            // Update the email_verified_at field to mark the email as verified
             $user->email_verified_at = Carbon::now();
             $user->save();
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Verifikasi email berhasil'
-            ]);
+            return view('confirmation.success', ['message' => 'Verifikasi email berhasil']);
         }
         Log::info('User: ' . $user);
 
-
-        return response()->json([
-            'success' => false,
-            'message' => 'Verifikasi gagal',
-            'data' => 'Unauthorized'
-        ], 401);
+        return view('confirmation.failure', ['message' => 'Verifikasi gagal']);
     }
+
 
 
     public function loginpemilik(Request $request)
@@ -173,7 +156,6 @@ class AuthController extends Controller
             ]);
         }
 
-        // Check email verified
         if (!$userpemilik->email_verified_at) {
             return response()->json([
                 'success' => false,
@@ -206,7 +188,6 @@ class AuthController extends Controller
     {
         $userpencari = UserPencari::where('email', $request->email)->first();
 
-        // Check if the user exists and the provided password matches
         if (!$userpencari || !Hash::check($request->password, $userpencari->password)) {
             return response()->json([
                 'success' => false,
@@ -215,7 +196,6 @@ class AuthController extends Controller
             ]);
         }
 
-        // Check if the email has been verified
         if (!$userpencari->email_verified_at) {
             return response()->json([
                 'success' => false,
@@ -277,8 +257,6 @@ class AuthController extends Controller
             ]);
         }
     }
-
-
 
 
     public function logout(Request $request)
