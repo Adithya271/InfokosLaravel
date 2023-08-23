@@ -57,34 +57,6 @@ class AuthController extends Controller
         ]);
     }
 
-    public function confirmationpemilik(Request $request, $id)
-    {
-        $key = $request->query('signature');
-
-        Log::info('ID: ' . $id);
-        Log::info('Signature: ' . $key);
-        $user = UserPemilik::where('id', $id)->where('remember_token', $key)->first();
-
-        if ($user) {
-
-            $user->email_verified_at = Carbon::now();
-            $user->save();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Verifikasi email berhasil'
-            ]);
-        }
-        Log::info('User: ' . $user);
-
-
-        return response()->json([
-            'success' => false,
-            'message' => 'Verifikasi gagal',
-            'data' => 'Unauthorized'
-        ], 401);
-    }
-
     public function registerpencari(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -122,7 +94,7 @@ class AuthController extends Controller
     }
 
 
-    public function confirmation(Request $request, $id)
+    public function confirmationpencari(Request $request, $id)
     {
         $key = $request->query('signature');
 
@@ -141,7 +113,25 @@ class AuthController extends Controller
         return view('confirmation.failure', ['message' => 'Verifikasi gagal']);
     }
 
+    public function confirmationpemilik(Request $request, $id)
+    {
+        $key = $request->query('signature');
 
+        Log::info('ID: ' . $id);
+        Log::info('Signature: ' . $key);
+        $user = UserPemilik::where('id', $id)->where('remember_token', $key)->first();
+
+        if ($user) {
+
+            $user->email_verified_at = Carbon::now();
+            $user->save();
+
+            return view('confirmation.success', ['message' => 'Verifikasi email berhasil']);
+        }
+        Log::info('User: ' . $user);
+
+        return view('confirmation.failure', ['message' => 'Verifikasi gagal']);
+    }
 
     public function loginpemilik(Request $request)
     {
