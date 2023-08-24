@@ -166,7 +166,7 @@ class TransaksiController extends Controller
         $transaksi->save();
 
         session()->flash('konfirmasi_success', 'Berhasil Konfirmasi');
-        return response()->json(['success' => true]);
+        return redirect('/transaksi')->with('success', 'Berhasil Konfirmasi');
     }
 
     public function transaksiBatal($id)
@@ -182,8 +182,8 @@ class TransaksiController extends Controller
         $transaksi->statusTransaksi = 'batal';
         $transaksi->save();
 
-        session()->flash('batalkan_success', 'Berhasil Batalan Transaksi');
-        return response()->json(['success' => true]);
+        session()->flash('batalkan_success', 'Transaksi Dibatalkan');
+        return redirect('/transaksi')->with('success', 'Transaksi Dibatalkan');
     }
 
     public function PemesanBatalBooking($id)

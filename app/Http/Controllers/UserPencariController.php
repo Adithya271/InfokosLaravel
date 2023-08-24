@@ -184,7 +184,7 @@ class UserPencariController extends Controller
     {
         $userpencari = UserPencari::findOrFail($id);
 
-        // Handle image upload
+
         if ($request->hasFile('profilGambar')) {
             $image = $request->file('profilGambar');
             $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -192,7 +192,6 @@ class UserPencariController extends Controller
             $userpencari->profilGambar = $filename;
         }
 
-        // Only update password if a new one is provided
         if ($request->has('password')) {
             $userpencari->password = Hash::make($request->password);
         }

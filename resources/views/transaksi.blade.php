@@ -88,7 +88,7 @@
                                     <strong>Nama Bank :</strong> {{ $transaksiItem->namaBank }}<br>
                                     <strong>Nomor Rekening Pengirim :</strong> {{ $transaksiItem->noRek }}<br>
                                     <strong>Bukti Transfer :</strong><br>
-                                    <img src="{{ asset('api/images/' . $transaksiItem->buktiBayar) }}" alt="Gambar Bukti" width="350" height="650"><br>
+                                    <img src="{{ asset('api/images/' . $transaksiItem->buktiBayar) }}" alt="Gambar Bukti" width="350" height="700"><br>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

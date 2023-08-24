@@ -15,7 +15,7 @@ class IklanController extends Controller
         $gambar = $request->gambar;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
-        
+
 
         $iklan = Iklan::where(function ($f) use ($gambar) {
             if ($gambar && $gambar != '' && $gambar != 'null') {
@@ -68,7 +68,7 @@ class IklanController extends Controller
 
         $iklan->save();
         session()->flash('tambah_success', 'Data berhasil ditambahkan');
-        return $this->success($iklan, 'save data success');
+        return redirect('/iklan')->with('success', 'Update data success');
     }
 
     public function update(IklanRequest $request, $id)
