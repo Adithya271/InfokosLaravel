@@ -25,6 +25,11 @@
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
 
+                        @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                        @endif
                         <div class="col-lg-12">
                             <div class="p-5">
                                 <div class="text-center">
@@ -55,6 +60,11 @@
 
                             </div>
                         </div>
+                        @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                        @endif
                     </div>
                 </div>
 
