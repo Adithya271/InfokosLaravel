@@ -88,7 +88,7 @@
                                     <strong>Nama Bank :</strong> {{ $transaksiItem->namaBank }}<br>
                                     <strong>Nomor Rekening Pengirim :</strong> {{ $transaksiItem->noRek }}<br>
                                     <strong>Bukti Transfer :</strong><br>
-                                    <img src="{{ asset('api/images/' . $transaksiItem->buktiBayar) }}" alt="Gambar Bukti" width="350" height="350"><br>
+                                    <img src="{{ asset('api/images/' . $transaksiItem->buktiBayar) }}" alt="Gambar Bukti" width="350" height="650"><br>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -130,6 +130,16 @@
                 @endforeach
             </tbody>
         </table>
+         @if(session('konfirmasi_success'))
+            <div class="alert alert-success">
+                {{ session('konfirmasi_success') }}
+            </div>
+        @endif
+         @if(session('batalkan_success'))
+            <div class="alert alert-success">
+                {{ session('batalkan_success') }}
+            </div>
+        @endif
         @if(session('delete_success'))
         <div class="alert alert-success">
             {{ session('delete_success') }}

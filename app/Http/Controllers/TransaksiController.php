@@ -165,6 +165,7 @@ class TransaksiController extends Controller
         $transaksi->statusTransaksi = 'sukses';
         $transaksi->save();
 
+        session()->flash('konfirmasi_success', 'Berhasil Konfirmasi');
         return response()->json(['success' => true]);
     }
 
@@ -181,6 +182,7 @@ class TransaksiController extends Controller
         $transaksi->statusTransaksi = 'batal';
         $transaksi->save();
 
+        session()->flash('batalkan_success', 'Berhasil Batalan Transaksi');
         return response()->json(['success' => true]);
     }
 
