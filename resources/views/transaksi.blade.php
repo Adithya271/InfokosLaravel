@@ -100,46 +100,47 @@
                     <td>{{ $transaksiItem->totalBayar }}</td>
                     <td>{{ $transaksiItem->statusTransaksi }}</td>
                    <td>
-                    @if($transaksiItem->statusTransaksi === 'menunggu konfirmasi')
+                     @if($transaksiItem->statusTransaksi === 'menunggu konfirmasi')
                         <form action="{{ route('transaksiSetuju', ['id' => $transaksiItem->id]) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Konfirmasi transaksi ini dan transfer uang ke pemilik kos?')">
+                            <button type="submit" class="btn btn-success btn-sm">
                                 Konfirmasi Transaksi
                             </button>
                         </form>
                     @elseif($transaksiItem->statusTransaksi === 'dibatalkan pemesan' || $transaksiItem->statusTransaksi === 'dibatalkan pemilik')
                         <form action="{{ route('transaksiBatal', ['id' => $transaksiItem->id]) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Batalkan transaksi ini dan kembalikan uang pemesan?')">
+                            <button type="submit" class="btn btn-danger btn-sm">
                                 Batalkan Transaksi
                             </button>
                         </form>
                     @endif
                 </td>
 
-                    <td>
-                        <form action="{{ url('/transaksi', ['id' => $transaksiItem->id]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </form>
-                    </td>
+                <td>
+                    <form action="{{ url('/transaksi', ['id' => $transaksiItem->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                </td>
                 </tr>
                 @endforeach
-            </tbody>
-        </table>
-         @if(session('konfirmasi_success'))
-            <div class="alert alert-success">
-                {{ session('konfirmasi_success') }}
-            </div>
-        @endif
-         @if(session('batalkan_success'))
-            <div class="alert alert-success">
-                {{ session('batalkan_success') }}
-            </div>
-        @endif
+                </tbody>
+                </table>
+                @if(session('konfirmasi_success'))
+                    <div class="alert alert-success">
+                        {{ session('konfirmasi_success') }}
+                    </div>
+                @endif
+                @if(session('batalkan_success'))
+                    <div class="alert alert-success">
+                        {{ session('batalkan_success') }}
+                    </div>
+                @endif
+
         @if(session('delete_success'))
         <div class="alert alert-success">
             {{ session('delete_success') }}
