@@ -229,6 +229,6 @@ class TransaksiController extends Controller
     {
         Transaksi::findOrFail($id)->delete();
         session()->flash('delete_success', 'Data berhasil dihapus');
-        return $this->success(null, 'delete data success');
+        return redirect('/transaksi')->with('success', 'Delete data success');
     }
 }

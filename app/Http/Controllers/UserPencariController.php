@@ -218,6 +218,6 @@ class UserPencariController extends Controller
     {
         UserPencari::findOrFail($id)->delete();
         session()->flash('delete_success', 'Data berhasil dihapus');
-        return $this->success(null, 'delete data success');
+        return redirect('/userpencari')->with('success', 'Delete data success');
     }
 }

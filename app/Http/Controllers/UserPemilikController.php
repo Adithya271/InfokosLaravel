@@ -227,6 +227,6 @@ class UserPemilikController extends Controller
     {
         UserPemilik::findOrFail($id)->delete();
         session()->flash('delete_success', 'Data berhasil dihapus');
-        return $this->success(null, 'delete data success');
+        return redirect('/userpemilik')->with('success', 'Delete data success');
     }
 }
