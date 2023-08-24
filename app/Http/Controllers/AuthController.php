@@ -94,7 +94,7 @@ class AuthController extends Controller
     }
 
 
-    public function confirmationpencari(Request $request, $id)
+    public function confirmation(Request $request, $id)
     {
         $key = $request->query('signature');
 

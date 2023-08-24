@@ -86,7 +86,9 @@
                                  <div class="modal-body">
                                     <strong>Nama Pengirim :</strong> {{ $transaksiItem->atasNama }}<br>
                                     <strong>Nama Bank :</strong> {{ $transaksiItem->namaBank }}<br>
-                                    <strong>Nomor Rekening Pengirim:</strong> {{ $transaksiItem->noRek }}<br>
+                                    <strong>Nomor Rekening Pengirim :</strong> {{ $transaksiItem->noRek }}<br>
+                                    <strong>Bukti Transfer :</strong><br>
+                                    <img src="{{ asset('api/images/' . $transaksiItem->buktiBayar) }}" alt="Gambar Bukti" width="50" height="50"><br>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -98,22 +100,23 @@
                     <td>{{ $transaksiItem->totalBayar }}</td>
                     <td>{{ $transaksiItem->statusTransaksi }}</td>
                    <td>
-                        @if($transaksiItem->statusTransaksi === 'pending')
-                            <form action="{{ route('transaksiSetuju', ['id' => $transaksiItem->id]) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-success btn-sm">
-                                    Setujui Transaksi
-                                </button>
-                            </form>
-                        @elseif($transaksiItem->statusTransaksi === 'dibatalkan pemesan' || $transaksiItem->statusTransaksi === 'dibatalkan pemilik')
-                            <form action="{{ route('transaksiBatal', ['id' => $transaksiItem->id]) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-danger btn-sm">
-                                    Batalkan Transaksi dan Kembalikan Uang Pemesan
-                                </button>
-                            </form>
-                        @endif
-                    </td>
+                    @if($transaksiItem->statusTransaksi === 'pending')
+                        <form action="{{ route('transaksiSetuju', ['id' => $transaksiItem->id]) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Konfirmasi transaksi ini dan transfer uang ke pemilik kos?')">
+                                Konfirmasi Transaksi
+                            </button>
+                        </form>
+                    @elseif($transaksiItem->statusTransaksi === 'dibatalkan pemesan' || $transaksiItem->statusTransaksi === 'dibatalkan pemilik')
+                        <form action="{{ route('transaksiBatal', ['id' => $transaksiItem->id]) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Batalkan transaksi ini dan kembalikan uang pemesan?')">
+                                Batalkan Transaksi
+                            </button>
+                        </form>
+                    @endif
+                </td>
+
                     <td>
                         <form action="{{ url('/transaksi', ['id' => $transaksiItem->id]) }}" method="POST">
                             @csrf

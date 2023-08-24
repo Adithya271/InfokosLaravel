@@ -31,7 +31,7 @@ Route::post('registerpemilik', [AuthController::class, 'registerpemilik']);
 Route::post('registerpencari', [AuthController::class, 'registerpencari']);
 Route::post('resetpassword', [AuthController::class, 'resetPassword']);
 Route::get('registerpemilik/confirmationpemilik/{id}', [AuthController::class, 'confirmationpemilik']);
-Route::get('registerpencari/confirmationpencari/{id}', [AuthController::class, 'confirmationpencari']);
+Route::get('registerpencari/confirmation/{id}', [AuthController::class, 'confirmation']);
 Route::post('loginpemilik', [AuthController::class, 'loginpemilik']);
 Route::post('loginpencari', [AuthController::class, 'loginpencari']);
 Route::post('loginadmin', [AuthController::class, 'loginadmin']);
