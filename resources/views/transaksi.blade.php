@@ -24,6 +24,7 @@
                     <th scope="col">Jumlah Kamar Dipesan</th>
                     <th scope="col">Informasi Rekening Pencari</th>
                     <th scope="col">Total Bayar</th>
+                    <th scope="col">Total Akhir</th>
                     <th scope="col">Status Transaksi</th>
                     <th scope="col">Aksi</th>
                     <th scope="col">Hapus</th>
@@ -97,7 +98,8 @@
                         </div>
                     </div>
                     </td>
-                    <td>{{ $transaksiItem->totalBayar }}</td>
+                    <td>Rp.{{ number_format($transaksiItem->totalBayar, 0, ',', '.') }}</td>
+                    <td>Rp.{{ number_format($transaksiItem->totalBayar - 30000, 0, ',', '.') }}</td>
                     <td>{{ $transaksiItem->statusTransaksi }}</td>
                    <td>
                     @if($transaksiItem->statusTransaksi === 'menunggu konfirmasi')
