@@ -100,7 +100,7 @@
                     <td>{{ $transaksiItem->totalBayar }}</td>
                     <td>{{ $transaksiItem->statusTransaksi }}</td>
                    <td>
-                    @if($transaksiItem->statusTransaksi === 'pending')
+                    @if($transaksiItem->statusTransaksi === 'menunggu konfirmasi')
                         <form action="{{ route('transaksiSetuju', ['id' => $transaksiItem->id]) }}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Konfirmasi transaksi ini dan transfer uang ke pemilik kos?')">
