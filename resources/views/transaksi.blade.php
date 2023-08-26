@@ -84,13 +84,16 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                 <div class="modal-body">
+                                <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
                                     <strong>Nama Pengirim :</strong> {{ $transaksiItem->atasNama }}<br>
                                     <strong>Nama Bank :</strong> {{ $transaksiItem->namaBank }}<br>
                                     <strong>Nomor Rekening Pengirim :</strong> {{ $transaksiItem->noRek }}<br>
                                     <strong>Bukti Transfer :</strong><br>
-                                    <img src="{{ asset('api/images/' . $transaksiItem->buktiBayar) }}" alt="Gambar Bukti" width="350" height="700"><br>
+                                    <div style="display: flex; justify-content: center;">
+                                        <img src="{{ asset('api/images/' . $transaksiItem->buktiBayar) }}" alt="Gambar Bukti" width="350" height="700">
+                                    </div>
                                 </div>
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                                 </div>
