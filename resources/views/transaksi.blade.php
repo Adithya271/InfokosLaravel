@@ -90,7 +90,7 @@
                                     <strong>Nomor Rekening Pengirim :</strong> {{ $transaksiItem->noRek }}<br>
                                     <strong>Bukti Transfer :</strong><br>
                                     <div style="text-align: center;">
-                                        <img src="{{ asset('api/images/' . $transaksiItem->buktiBayar) }}" alt="Gambar Bukti" width="350" height="700"><br>
+                                        <img src="{{ asset('api/images/' . $transaksiItem->buktiBayar) }}" alt="Gambar Bukti" width="380" height="700"><br>
                                     </div>
 
                                 </div>
