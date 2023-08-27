@@ -112,7 +112,7 @@
                     </div>
                     </td>
                     <td>Rp.{{ number_format($transaksiItem->totalBayar, 0, ',', '.') }}</td>
-                    <td>Rp.{{ number_format($transaksiItem->totalBayar - 30000, 0, ',', '.') }}</td>
+                    <td>Rp.{{ number_format($transaksiItem->totalBayar - 50000, 0, ',', '.') }}</td>
                     <td>{{ $transaksiItem->statusTransaksi }}</td>
                    <td>
                   @if($transaksiItem->statusTransaksi === 'sukses')
