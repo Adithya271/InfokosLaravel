@@ -9,7 +9,7 @@ class Transaksi extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'pencariId', 'noTransaksi', 'tglTransaksi', 'namaPencari', 'kosId', 'jlhKamar',
+        'pencariId', 'noTransaksi', 'tglTransaksi', 'tglBooking', 'namaPencari', 'kosId', 'jlhKamar',
          'pemilikId', 'catatanPesanan',
         'totalBayar', 'buktiBayar', 'atasNama', 'namaBank', 'noRek', 'statusTransaksi',
     ];

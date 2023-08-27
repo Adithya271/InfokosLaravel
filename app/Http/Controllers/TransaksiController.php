@@ -78,6 +78,7 @@ class TransaksiController extends Controller
         $transaksi->pencariId = $request->pencariId;
         $transaksi->noTransaksi = $request->noTransaksi;
         $transaksi->tglTransaksi = $request->tglTransaksi;
+        $transaksi->tglBooking = $request->tglBooking;
         $transaksi->namaPencari = $request->namaPencari;
         $transaksi->kosId = $request->kosId;
         $transaksi->jlhKamar = $request->jlhKamar;
@@ -137,6 +138,7 @@ class TransaksiController extends Controller
         $transaksi->pencariId = $request->pencariId;
         $transaksi->noTransaksi = $request->noTransaksi;
         $transaksi->tglTransaksi = $request->tglTransaksi;
+        $transaksi->tglBooking = $request->tglBooking;
         $transaksi->namaPencari = $request->namaPencari;
         $transaksi->kosId = $request->kosId;
         $transaksi->jlhKamar = $request->jlhKamar;
@@ -152,7 +154,22 @@ class TransaksiController extends Controller
         return $this->success($transaksi, 'update data success');
     }
 
-    public function transaksiSetuju($id)
+    //pemilik konfirm booking
+    public function konfirmBooking($id)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+        $penginapanId = $transaksi->kosId;
+
+        $penginapan = Penginapan::findOrFail($penginapanId);
+        $penginapan->save();
+
+        $transaksi->statusTransaksi = 'dikonfirmasi pemilik';
+        $transaksi->save();
+
+        return $this->success($transaksi, 'berhasil konfirmasi');
+    }
+
+    public function sudahCheckin($id)
     {
         $transaksi = Transaksi::findOrFail($id);
         $penginapanId = $transaksi->kosId;
@@ -165,27 +182,7 @@ class TransaksiController extends Controller
         $transaksi->statusTransaksi = 'sukses';
         $transaksi->save();
 
-        session()->flash('konfirmasi_success', 'Berhasil Konfirmasi');
-
-        return redirect('/transaksi')->with('success', 'Telah berhasil konfirmasi');
-    }
-
-    public function transaksiBatal($id)
-    {
-        $transaksi = Transaksi::findOrFail($id);
-        $penginapanId = $transaksi->kosId;
-        $jumlahKamarDipesan = $transaksi->jlhKamar;
-
-        $penginapan = Penginapan::findOrFail($penginapanId);
-        $penginapan->jlhKamar += $jumlahKamarDipesan;
-        $penginapan->save();
-
-        $transaksi->statusTransaksi = 'batal';
-        $transaksi->save();
-
-        session()->flash('batalkan_success', 'Transaksi Dibatalkan');
-
-        return redirect('/transaksi')->with('success', 'Transaksi telah dibatalkan');
+        return $this->success($transaksi, 'transaksi berhasil');
     }
 
     public function PemesanBatalBooking($id)
@@ -208,7 +205,6 @@ class TransaksiController extends Controller
     {
         $transaksi = Transaksi::findOrFail($id);
         $penginapanId = $transaksi->kosId;
-
 
         $penginapan = Penginapan::findOrFail($penginapanId);
 

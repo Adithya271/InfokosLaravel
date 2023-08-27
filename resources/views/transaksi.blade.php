@@ -26,7 +26,7 @@
                     <th scope="col">Total Bayar</th>
                     <th scope="col">Total Akhir</th>
                     <th scope="col">Status Transaksi</th>
-                    <th scope="col">Aksi</th>
+                    <th scope="col">Pesan</th>
                     <th scope="col">Hapus</th>
                 </tr>
             </thead>
@@ -88,10 +88,15 @@
                                     <strong>Nama Pengirim :</strong> {{ $transaksiItem->atasNama }}<br>
                                     <strong>Nama Bank :</strong> {{ $transaksiItem->namaBank }}<br>
                                     <strong>Nomor Rekening Pengirim :</strong> {{ $transaksiItem->noRek }}<br>
-                                    <strong>Bukti Transfer :</strong><br>
+                                   <strong>Bukti Transfer :</strong><br>
                                     <div style="text-align: center;">
-                                        <img src="{{ asset('api/images/' . $transaksiItem->buktiBayar) }}" alt="Gambar Bukti" width="380" height="700"><br>
+                                        @if(optional($transaksiItem->buktiBayar)->isNotEmpty())
+                                            <img src="{{ asset('api/images/' . $transaksiItem->buktiBayar) }}" alt="Gambar Bukti" width="380" height="700"><br>
+                                        @else
+                                            <p>Tidak ada bukti transfer yang tersedia.</p>
+                                        @endif
                                     </div>
+
 
                                 </div>
 
@@ -106,18 +111,11 @@
                     <td>Rp.{{ number_format($transaksiItem->totalBayar - 30000, 0, ',', '.') }}</td>
                     <td>{{ $transaksiItem->statusTransaksi }}</td>
                    <td>
-                    @if($transaksiItem->statusTransaksi === 'menunggu konfirmasi')
+                   @if($transaksiItem->statusTransaksi === 'sukses')
                         <form action="{{ route('transaksiSetuju', ['id' => $transaksiItem->id]) }}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Konfirmasi transaksi ini dan transfer uang ke pemilik kos?')">
-                                Konfirmasi Transaksi
-                            </button>
-                        </form>
-                    @elseif($transaksiItem->statusTransaksi === 'dibatalkan pemesan' || $transaksiItem->statusTransaksi === 'dibatalkan pemilik')
-                        <form action="{{ route('transaksiBatal', ['id' => $transaksiItem->id]) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Batalkan transaksi ini dan kembalikan uang pemesan?')">
-                                Batalkan Transaksi
+                                Silahkan Teruskan Uang Sewa Pemilik
                             </button>
                         </form>
                     @endif
@@ -136,16 +134,6 @@
                 @endforeach
             </tbody>
         </table>
-         @if(session('konfirmasi_success'))
-            <div class="alert alert-success">
-                {{ session('konfirmasi_success') }}
-            </div>
-        @endif
-         @if(session('batalkan_success'))
-            <div class="alert alert-success">
-                {{ session('batalkan_success') }}
-            </div>
-        @endif
         @if(session('delete_success'))
         <div class="alert alert-success">
             {{ session('delete_success') }}
