@@ -49,7 +49,7 @@ class TransaksiController extends Controller
         $searchQuery = $request->input('search');
         $limit = $request->limit ?: 10;
 
-        $transaksi = Transaksi::where('namaPencari', 'like', '%' . $searchQuery . '%')
+        $transaksi = Transaksi::where('namaPencari', 'statusTransaksi', 'like', '%' . $searchQuery . '%')
             ->paginate($limit);
 
         if ($request->wantsJson()) {
