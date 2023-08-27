@@ -170,7 +170,7 @@ class TransaksiController extends Controller
         $transaksi->statusTransaksi = 'dikonfirmasi pemilik';
         $transaksi->save();
 
-        return $this->success($transaksi, 'berhasil konfirmasi');
+        return response()->json(['success' => true]);
     }
 
     //setelah bayar, pemilik konfirmasi transaksi
@@ -187,7 +187,7 @@ class TransaksiController extends Controller
         $transaksi->statusTransaksi = 'sukses';
         $transaksi->save();
 
-        return $this->success($transaksi, 'transaksi berhasil');
+        return response()->json(['success' => true]);
     }
 
     public function PemesanBatalBooking($id)
