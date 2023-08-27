@@ -28,11 +28,10 @@ class TransaksiRequest extends FormRequest
         return [
             'pencariId' => 'integer|required',
 
-            'namaPencari' => 'string|required|min:3',
             'kosId' => 'integer|required',
-            'jlhKamar' => 'integer|required',
-            'pemilikId' => 'integer|required',
            
+            'pemilikId' => 'integer|required',
+
 
         ];
     }
