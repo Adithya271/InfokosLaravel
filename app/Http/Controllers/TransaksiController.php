@@ -173,6 +173,7 @@ class TransaksiController extends Controller
         return $this->success($transaksi, 'berhasil konfirmasi');
     }
 
+    //setelah bayar, pemilik konfirmasi transaksi
     public function sudahCheckin($id)
     {
         $transaksi = Transaksi::findOrFail($id);

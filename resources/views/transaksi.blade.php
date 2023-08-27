@@ -17,6 +17,7 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nomor Transaksi</th>
+                    <th scope="col">Tanggal Booking</th>
                     <th scope="col">Tanggal Transaksi</th>
                     <th scope="col">Nama Pemesan</th>
                     <th scope="col">Nama Penginapan</th>
@@ -35,6 +36,7 @@
                 <tr>
                     <td>{{ $transaksiItem->id }}</td>
                     <td>{{ $transaksiItem->noTransaksi }}</td>
+                    <td>{{ $transaksiItem->tglBooking }}</td>
                     <td>{{ $transaksiItem->tglTransaksi }}</td>
                     <td>{{ $transaksiItem->namaPencari }}</td>
                     <td>
