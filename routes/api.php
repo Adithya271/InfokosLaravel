@@ -125,8 +125,8 @@ Route::post('/lokasiupdate', [LokasiController::class, 'storeOrUpdate']);
 
 Route::get('/transaksi', [TransaksiController::class, 'index']);
 Route::post('/transaksi', [TransaksiController::class, 'store']);
-Route::post('/konfirmasibooking/{id}', [TransaksiController::class, 'konfirmasibooking'])->name('konfirmasibooking');
-Route::post('/sudahcheckin/{id}', [TransaksiController::class, 'sudahcheckin'])->name('sudahcheckin');
+Route::post('/konfirmasibooking/{id}', [TransaksiController::class, 'konfirmBooking'])->name('konfirmBooking');
+Route::post('/sudahcheckin/{id}', [TransaksiController::class, 'sudahCheckin'])->name('sudahCheckin');
 Route::post('/pemesanbatalbooking/{id}', [TransaksiController::class, 'PemesanBatalBooking']);
 Route::post('/pemilikbatalbooking/{id}', [TransaksiController::class, 'PemilikBatalBooking']);
 Route::put('/transaksi/{id}', [TransaksiController::class, 'update']);
