@@ -91,12 +91,13 @@
                                     <strong>Nomor Rekening Pengirim :</strong> {{ $transaksiItem->noRek }}<br>
                                    <strong>Bukti Transfer :</strong><br>
                                     <div style="text-align: center;">
-                                        @if(optional($transaksiItem->buktiBayar)->isNotEmpty())
+                                        @if($transaksiItem->buktiBayar)
                                             <img src="{{ asset('api/images/' . $transaksiItem->buktiBayar) }}" alt="Gambar Bukti" width="380" height="700"><br>
                                         @else
                                             <p>Tidak ada bukti transfer yang tersedia.</p>
                                         @endif
                                     </div>
+
 
 
                                 </div>
