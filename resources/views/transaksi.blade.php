@@ -61,6 +61,7 @@
                                             <strong>Nama Pemilik :</strong> {{ $user_pemilik->nama }}<br>
                                             <strong>Nama Bank :</strong> {{ $user_pemilik->namaBank }}<br>
                                             <strong>Nomor Rekening Pemilik :</strong> {{ $user_pemilik->noRek }}<br>
+                                            <strong>Nomor Handphone Pemilik :</strong> {{ $user_pemilik->nomorHp }}<br>
                                         @endforeach
                                     </div>
                                     <div class="modal-footer">
