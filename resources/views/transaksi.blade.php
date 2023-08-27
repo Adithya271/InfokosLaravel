@@ -113,14 +113,10 @@
                     <td>Rp.{{ number_format($transaksiItem->totalBayar - 30000, 0, ',', '.') }}</td>
                     <td>{{ $transaksiItem->statusTransaksi }}</td>
                    <td>
-                   @if($transaksiItem->statusTransaksi === 'sukses')
-                        <form action="{{ route('transaksiSetuju', ['id' => $transaksiItem->id]) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Konfirmasi transaksi ini dan transfer uang ke pemilik kos?')">
-                                Silahkan Teruskan Uang Sewa Pemilik
-                            </button>
-                        </form>
-                    @endif
+                  @if($transaksiItem->statusTransaksi === 'sukses')
+                    <p>Silahkan Kirimkan Uang Sewa Pemilik</p>
+                @endif
+
                 </td>
 
                     <td>
