@@ -167,7 +167,7 @@ class TransaksiController extends Controller
         $penginapan = Penginapan::findOrFail($penginapanId);
         $penginapan->save();
 
-        $transaksi->statusTransaksi = 'dikonfirmasi pemilik (menunggu pembayaran 1x24 jam)';
+        $transaksi->statusTransaksi = 'dikonfirmasi pemilik (menunggu pembayaran dalam 1x24 jam)';
         $transaksi->save();
 
         return response()->json(['success' => true]);
