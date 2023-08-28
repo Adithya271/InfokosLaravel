@@ -17,7 +17,7 @@ class FavoritController extends Controller
         $namaKos = $request->namaKos;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
-        $emailPenambah = $request->emailPenambah; 
+        $emailPenambah = $request->emailPenambah;
 
         $favorit = Favorit::where(function ($f) use ($namaKos, $emailPenambah) {
             if ($namaKos && $namaKos != '' && $namaKos != 'null') {
@@ -65,6 +65,7 @@ class FavoritController extends Controller
             $path = $image->storeAs('public/images', $filename);
             $favorit->gambarKos = str_replace('"', '', $filename);
         }
+        $favorit->id = $request->id;
         $favorit->namaKos = $request->namaKos;
         $favorit->alamat = $request->alamat;
         $favorit->cerita = $request->cerita;
