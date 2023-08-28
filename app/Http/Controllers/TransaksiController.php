@@ -190,6 +190,21 @@ class TransaksiController extends Controller
         return response()->json(['success' => true]);
     }
 
+    //setelah sukses, pemilik konfirmasi uang dari admin
+    public function selesai($id)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+        $penginapanId = $transaksi->kosId;
+
+        $penginapan = Penginapan::findOrFail($penginapanId);
+        $penginapan->save();
+
+        $transaksi->statusTransaksi = 'selesai';
+        $transaksi->save();
+
+        return response()->json(['success' => true]);
+    }
+
     public function PemesanBatalBooking($id)
     {
         $transaksi = Transaksi::findOrFail($id);
