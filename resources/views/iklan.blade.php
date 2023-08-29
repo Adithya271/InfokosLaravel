@@ -25,7 +25,7 @@
     </form>
 
      <div class="pagination">
-        {{ $records->links() }}
+        {{ $items->links() }}
     </div>
 
 
