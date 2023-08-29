@@ -77,8 +77,7 @@
 <style>
 .pagination {
     display: flex;
-    justify-content: center;
-    align-items: center;
+
     margin-top: 20px;
 }
 
@@ -121,6 +120,10 @@
     font-size: 1px;
 }
 
+.pagination .page-link {
+    font-size: 1px;
+    padding: 1px 1px;
+}
 
 .pagination .prev i,
 .pagination .next i {
