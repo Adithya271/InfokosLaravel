@@ -23,7 +23,6 @@ class IklanController extends Controller
             }
         })
 
-
             ->orderBy($orderCol, $orderType)->paginate($limit);
 
         $data['paging'] = new PaginationResource($iklan);

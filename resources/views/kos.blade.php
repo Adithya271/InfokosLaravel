@@ -11,7 +11,7 @@
         </div>
     </form>
      <div class="pagination">
-        {{ $transaksi->links() }}
+        {{ $penginapan->links() }}
     </div>
 
     <div class="table-responsive">

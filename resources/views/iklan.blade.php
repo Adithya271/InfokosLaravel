@@ -25,7 +25,7 @@
     </form>
 
      <div class="pagination">
-        {{ $iklan->links() }}
+        {{ $records->links() }}
     </div>
 
 
