@@ -88,10 +88,10 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    {{-- <!-- Sidebar Toggle (Topbar) -->
+                    <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
-                    </button> --}}
+                    </button>
 
 
                     <!-- Topbar Navbar -->
