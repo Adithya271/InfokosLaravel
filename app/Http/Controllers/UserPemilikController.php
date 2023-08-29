@@ -13,7 +13,7 @@ class UserPemilikController extends Controller
 {
     public function index(Request $request)
     {
-        $limit = $request->limit ?: 10;
+        $limit = $request->limit ?: 2;
         $email = $request->email;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
