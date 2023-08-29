@@ -10,6 +10,7 @@
             <button type="submit" class="btn btn-primary mt-2">Cari</button>
         </div>
     </form>
+     {{ $transaksi->links() }}
 
   <div class="table-responsive">
         <table class="table table-bordered">
