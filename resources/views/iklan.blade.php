@@ -24,11 +24,6 @@
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
 
-     <div class="pagination">
-        {{ $items->links() }}
-    </div>
-
-
     <div class="table-responsive mt-4">
         <table class="table table-bordered">
             <thead class="thead-dark">
@@ -70,40 +65,6 @@
         @endif
     </div>
 </div>
-
-<style>
-.pagination a {
-    display: inline-block;
-    padding: 0px 10px;
-    font-size: 14px;
-    background-color: #f1f1f1;
-    color: #333;
-    text-decoration: none;
-    border-radius: 4px;
-}
-
-.pagination a:hover {
-    background-color: #ddd;
-}
-
-.pagination .active {
-    background-color: #007bff;
-    color: white;
-}
-
-.pagination .disabled {
-    pointer-events: none;
-    background-color: #f1f1f1;
-    color: #ccc;
-}
-
-.pagination  svg {
-    width: 2px;
-    height: 2px;
-
-}
-</style>
-
 
 
 @endsection

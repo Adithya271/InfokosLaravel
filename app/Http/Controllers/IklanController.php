@@ -11,7 +11,7 @@ class IklanController extends Controller
 {
     public function index(Request $request)
     {
-        $limit = $request->limit ?: 1;
+        $limit = $request->limit;
         $gambar = $request->gambar;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
@@ -29,12 +29,10 @@ class IklanController extends Controller
         $data['records'] = $iklan->items();
 
         if ($request->wantsJson()) {
-        return $this->success($data, 'get records data success');
-    }
+            return $this->success($data, 'get records data success');
+        }
 
         return view('iklan', $data);
-
-
     }
 
     /**
