@@ -4755,121 +4755,59 @@ input[type="button"].btn-block {
 .breadcrumb-item.active {
   color: #858796;
 }
+/* Di dalam tag <style> atau dalam file .css Anda */
 .pagination {
+    display: flex;
     justify-content: center;
+    align-items: center;
     margin-top: 20px;
 }
-.pagination .page-item:first-child .page-link,
-.pagination .page-item:last-child .page-link {
-    padding: 3px 8px;
-    /* Sesuaikan dengan ukuran padding yang Anda inginkan */
-    font-size: 2px;
-    /* Sesuaikan dengan ukuran font yang Anda inginkan */
+
+.pagination .pagination {
+    margin: 0;
 }
 
-.pagination .page-link {
-    padding: 2px 6px;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    color: #333;
-}
-
-.pagination .page-link:hover {
-    background-color: #f8f9fa;
-}
-
-.pagination .page-item.active .page-link {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: #fff;
-}
-
-.page-link {
-    position: relative;
-    display: block;
-    padding: 0.5rem 0.75rem;
-    margin-left: -1px;
-    line-height: 1.25;
-    color: #4e73df;
-    background-color: #fff;
-    border: 1px solid #dddfeb;
-}
-
-.page-link:hover {
-    z-index: 2;
-    color: #224abe;
-    text-decoration: none;
-    background-color: #eaecf4;
-    border-color: #dddfeb;
-}
-
-.page-link:focus {
-    z-index: 3;
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
-}
-
-.page-item:first-child .page-link {
-    margin-left: 0;
-    border-top-left-radius: 0.35rem;
-    border-bottom-left-radius: 0.35rem;
-}
-
-.pagination .page-item {
-    display: inline-block;
+.pagination li {
+    list-style: none;
     margin: 0 5px;
+    font-size: 14px;
+    /* Atur ukuran font sesuai kebutuhan */
 }
 
-.page-item:last-child .page-link {
-  border-top-right-radius: 0.35rem;
-  border-bottom-right-radius: 0.35rem;
+.pagination a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #f1f1f1;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
 }
 
-.page-item.active .page-link {
-  z-index: 3;
-  color: #fff;
-  background-color: #4e73df;
-  border-color: #4e73df;
+.pagination a:hover {
+    background-color: #ddd;
 }
 
-.page-item.disabled .page-link {
-  color: #858796;
-  pointer-events: none;
-  cursor: auto;
-  background-color: #fff;
-  border-color: #dddfeb;
+.pagination .active a {
+    background-color: #007bff;
+    color: white;
 }
 
-.pagination-lg .page-link {
-  padding: 0.75rem 1.5rem;
-  font-size: 1.25rem;
-  line-height: 1.5;
+.pagination .disabled a {
+    pointer-events: none;
+    background-color: #f1f1f1;
+    color: #ccc;
 }
 
-.pagination-lg .page-item:first-child .page-link {
-  border-top-left-radius: 0.3rem;
-  border-bottom-left-radius: 0.3rem;
+.pagination .next a,
+.pagination .prev a {
+    font-size: 14px;
+    /* Atur ukuran font sesuai kebutuhan */
 }
 
-.pagination-lg .page-item:last-child .page-link {
-  border-top-right-radius: 0.3rem;
-  border-bottom-right-radius: 0.3rem;
-}
-
-.pagination-sm .page-link {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-
-.pagination-sm .page-item:first-child .page-link {
-  border-top-left-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
-}
-
-.pagination-sm .page-item:last-child .page-link {
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
+/* Atur ukuran ikon jika diperlukan */
+.pagination .prev i,
+.pagination .next i {
+    font-size: 16px;
 }
 
 .badge {
