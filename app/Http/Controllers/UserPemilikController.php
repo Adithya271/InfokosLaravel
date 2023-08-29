@@ -160,7 +160,9 @@ class UserPemilikController extends Controller
         $userpemilik->save();
 
         session()->flash('tambah_success', 'Data berhasil ditambahkan');
-        return $this->success($userpemilik, 'save data success');
+        if ($request->wantsJson()) {
+            return $this->success($userpemilik, 'save data success');
+        }
         return redirect('/userpemilik')->with('success', 'tambah data success');
     }
 

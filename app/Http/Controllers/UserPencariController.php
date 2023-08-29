@@ -142,7 +142,9 @@ class UserPencariController extends Controller
         $userpencari->save();
 
         session()->flash('tambah_success', 'Data berhasil ditambahkan');
-        return $this->success($userpencari, 'save data success');
+        if ($request->wantsJson()) {
+            return $this->success($userpencari, 'save data success');
+        }
         return redirect('/userpencari')->with('success', 'tambah data success');
     }
 
