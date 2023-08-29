@@ -4759,14 +4759,14 @@ input[type="button"].btn-block {
     justify-content: center;
     margin-top: 20px;
 }
-
 .pagination .page-item:first-child .page-link,
 .pagination .page-item:last-child .page-link {
-    padding: 3px 10px;
-
-    font-size: 14px;
-
+    padding: 3px 8px;
+    /* Sesuaikan dengan ukuran padding yang Anda inginkan */
+    font-size: 12px;
+    /* Sesuaikan dengan ukuran font yang Anda inginkan */
 }
+
 .pagination .page-link {
     padding: 2px 6px;
     border: 1px solid #ddd;
@@ -4785,34 +4785,34 @@ input[type="button"].btn-block {
 }
 
 .page-link {
-  position: relative;
-  display: block;
-  padding: 0.5rem 0.75rem;
-  margin-left: -1px;
-  line-height: 1.25;
-  color: #4e73df;
-  background-color: #fff;
-  border: 1px solid #dddfeb;
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #4e73df;
+    background-color: #fff;
+    border: 1px solid #dddfeb;
 }
 
 .page-link:hover {
-  z-index: 2;
-  color: #224abe;
-  text-decoration: none;
-  background-color: #eaecf4;
-  border-color: #dddfeb;
+    z-index: 2;
+    color: #224abe;
+    text-decoration: none;
+    background-color: #eaecf4;
+    border-color: #dddfeb;
 }
 
 .page-link:focus {
-  z-index: 3;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+    z-index: 3;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
 }
 
 .page-item:first-child .page-link {
-  margin-left: 0;
-  border-top-left-radius: 0.35rem;
-  border-bottom-left-radius: 0.35rem;
+    margin-left: 0;
+    border-top-left-radius: 0.35rem;
+    border-bottom-left-radius: 0.35rem;
 }
 
 .pagination .page-item {
