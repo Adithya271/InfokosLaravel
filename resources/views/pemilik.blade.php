@@ -10,6 +10,9 @@
             <button type="submit" class="btn btn-primary mt-2">Cari</button>
         </div>
     </form>
+     <div class="pagination">
+        {{ $userpemilik->links() }}
+    </div>
      <div class="mb-3">
        <a href="{{ route('pemilik.create') }}" class="btn btn-success">Tambah Data</a>
     </div>
