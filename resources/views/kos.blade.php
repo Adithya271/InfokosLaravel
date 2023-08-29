@@ -10,6 +10,9 @@
             <button type="submit" class="btn btn-primary mt-2">Cari</button>
         </div>
     </form>
+     <div class="pagination">
+        {{ $transaksi->links() }}
+    </div>
 
     <div class="table-responsive">
         <table class="table table-bordered">
@@ -85,5 +88,41 @@
 
     </div>
 </div>
+
+<style>
+.pagination a {
+    display: inline-block;
+    padding: 0px 10px;
+    font-size: 14px;
+    background-color: #f1f1f1;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
+
+.pagination .active {
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination .disabled {
+    pointer-events: none;
+    background-color: #f1f1f1;
+    color: #ccc;
+}
+
+.pagination  svg {
+    width: 2px;
+    height: 2px;
+
+}
+</style>
+
+
+
 
 @endsection

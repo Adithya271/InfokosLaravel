@@ -12,7 +12,7 @@ class TransaksiController extends Controller
 {
     public function index(Request $request)
     {
-        $limit = $request->limit ?: 5;
+        $limit = $request->limit ?: 1;
         $id = $request->id;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';

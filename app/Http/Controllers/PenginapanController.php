@@ -13,7 +13,7 @@ class PenginapanController extends Controller
 {
     public function index(Request $request)
     {
-        $limit = $request->limit ?: 10;
+        $limit = $request->limit ?: 1;
         $namaKecamatan = $request->namaKecamatan;
         $id = $request->pemilikId;
         $orderCol = $request->order_col ? $request->order_col : 'id';

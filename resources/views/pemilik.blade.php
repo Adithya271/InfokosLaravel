@@ -75,25 +75,10 @@
 </div>
 
 <style>
-.pagination {
-    display: flex;
-
-    margin-top: 2px;
-}
-
-.pagination .pagination {
-    margin: 0;
-}
-
-.pagination li {
-    list-style: none;
-    margin: 0 1px;
-    font-size: 1px;
-}
-
 .pagination a {
     display: inline-block;
-    padding: 1px 1px;
+    padding: 0px 10px;
+    font-size: 14px;
     background-color: #f1f1f1;
     color: #333;
     text-decoration: none;
@@ -104,31 +89,24 @@
     background-color: #ddd;
 }
 
-.pagination .active a {
+.pagination .active {
     background-color: #007bff;
     color: white;
 }
 
-.pagination .disabled a {
+.pagination .disabled {
     pointer-events: none;
     background-color: #f1f1f1;
     color: #ccc;
 }
 
-.pagination .next a,
-.pagination .prev a {
-    font-size: 1px;
-}
+.pagination  svg {
+    width: 2px;
+    height: 2px;
 
-.pagination .page-link {
-    font-size: 1px;
-    padding: 1px 1px;
-}
-
-.pagination .prev i,
-.pagination .next i {
-    font-size: 1px;
 }
 </style>
+
+
 
 @endsection

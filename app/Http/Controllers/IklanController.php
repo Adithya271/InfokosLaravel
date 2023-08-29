@@ -11,7 +11,7 @@ class IklanController extends Controller
 {
     public function index(Request $request)
     {
-        $limit = $request->limit ?: 10;
+        $limit = $request->limit ?: 1;
         $gambar = $request->gambar;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
