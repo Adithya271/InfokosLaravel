@@ -13,7 +13,7 @@ class UserPemilikController extends Controller
 {
     public function index(Request $request)
     {
-        $limit = $request->limit ?: 10;
+        $limit = $request->limit ?: 5;
         $email = $request->email;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
@@ -37,7 +37,7 @@ class UserPemilikController extends Controller
     public function getProfile(Request $request, $id)
     {
 
-        $limit = $request->limit ?: 10;
+        $limit = $request->limit;
         $id = $id;
         $orderCol = $request->order_col ? $request->order_col : 'id';
         $orderType = $request->order_type ? $request->order_type : 'asc';
