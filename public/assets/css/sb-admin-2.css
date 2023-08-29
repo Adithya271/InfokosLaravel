@@ -4763,7 +4763,7 @@ input[type="button"].btn-block {
 .pagination .page-item:last-child .page-link {
     padding: 3px 8px;
     /* Sesuaikan dengan ukuran padding yang Anda inginkan */
-    font-size: 12px;
+    font-size: 2px;
     /* Sesuaikan dengan ukuran font yang Anda inginkan */
 }
 
