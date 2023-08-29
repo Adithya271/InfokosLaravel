@@ -161,6 +161,7 @@ class UserPemilikController extends Controller
 
         session()->flash('tambah_success', 'Data berhasil ditambahkan');
         return $this->success($userpemilik, 'save data success');
+        return redirect('/userpemilik')->with('success', 'tambah data success');
     }
 
     /**
