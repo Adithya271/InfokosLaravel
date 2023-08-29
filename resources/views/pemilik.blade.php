@@ -78,7 +78,7 @@
 .pagination {
     display: flex;
 
-    margin-top: 20px;
+    margin-top: 2px;
 }
 
 .pagination .pagination {
@@ -87,13 +87,13 @@
 
 .pagination li {
     list-style: none;
-    margin: 0 5px;
+    margin: 0 1px;
     font-size: 1px;
 }
 
 .pagination a {
     display: inline-block;
-    padding: 5px 10px;
+    padding: 1px 1px;
     background-color: #f1f1f1;
     color: #333;
     text-decoration: none;
