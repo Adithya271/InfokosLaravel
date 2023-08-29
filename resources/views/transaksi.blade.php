@@ -118,7 +118,9 @@
                   @if($transaksiItem->statusTransaksi === 'sukses')
                     <p>Silahkan Kirimkan Uang Sewa Pemilik</p>
                 @endif
-
+                     @if($transaksiItem->statusTransaksi === 'dibatalkan pemilik')
+                    <p>Silahkan Kembalikan Uang Transfer Pemesan Jika Sudah Transfer</p>
+                @endif
                 </td>
 
                     <td>
