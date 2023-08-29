@@ -74,4 +74,58 @@
     </div>
 </div>
 
+<style>
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination .pagination {
+    margin: 0;
+}
+
+.pagination li {
+    list-style: none;
+    margin: 0 5px;
+    font-size: 1px;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #f1f1f1;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
+
+.pagination .active a {
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination .disabled a {
+    pointer-events: none;
+    background-color: #f1f1f1;
+    color: #ccc;
+}
+
+.pagination .next a,
+.pagination .prev a {
+    font-size: 1px;
+}
+
+
+.pagination .prev i,
+.pagination .next i {
+    font-size: 1px;
+}
+</style>
+
 @endsection
