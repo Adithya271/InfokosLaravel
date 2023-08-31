@@ -118,7 +118,7 @@
                     <td>Rp.{{ number_format($transaksiItem->totalBayar - 50000, 0, ',', '.') }}</td>
                     <td>{{ $transaksiItem->statusTransaksi }}</td>
                    <td>
-                  @if($transaksiItem->statusTransaksi === 'sukses')
+                  @if($transaksiItem->statusTransaksi === 'sedangberlangsung')
                     <p>Silahkan Kirimkan Uang Sewa Pemilik</p>
                 @endif
                      @if($transaksiItem->statusTransaksi === 'dibatalkan pemilik')

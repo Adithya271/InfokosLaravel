@@ -191,6 +191,21 @@ class TransaksiController extends Controller
     }
 
     //setelah sukses, pemilik konfirmasi uang dari admin
+    public function sedangberlangsung($id)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+        $penginapanId = $transaksi->kosId;
+
+        $penginapan = Penginapan::findOrFail($penginapanId);
+        $penginapan->save();
+
+        $transaksi->statusTransaksi = 'sedang berlangsung';
+        $transaksi->save();
+
+        return response()->json(['success' => true]);
+    }
+
+    //pencari kos telah tidak di kos
     public function selesai($id)
     {
         $transaksi = Transaksi::findOrFail($id);
