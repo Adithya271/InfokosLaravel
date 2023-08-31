@@ -205,6 +205,35 @@ class TransaksiController extends Controller
         return response()->json(['success' => true]);
     }
 
+    public function pemilikajukanhapus($id)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+        $penginapanId = $transaksi->kosId;
+
+        $penginapan = Penginapan::findOrFail($penginapanId);
+        $penginapan->save();
+
+        $transaksi->statusTransaksi = 'pemilik ajukan hapus';
+        $transaksi->save();
+
+        return response()->json(['success' => true]);
+    }
+
+    public function pencariajukanhapus($id)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+        $penginapanId = $transaksi->kosId;
+
+        $penginapan = Penginapan::findOrFail($penginapanId);
+        $penginapan->save();
+
+        $transaksi->statusTransaksi = 'pencari ajukan hapus';
+        $transaksi->save();
+
+        return response()->json(['success' => true]);
+    }
+
+
     //pencari kos telah tidak di kos
     public function selesai($id)
     {

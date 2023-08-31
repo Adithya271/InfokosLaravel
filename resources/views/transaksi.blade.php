@@ -124,6 +124,12 @@
                      @if($transaksiItem->statusTransaksi === 'dibatalkan pemilik')
                     <p>Silahkan Kembalikan Uang Transfer Pemesan Jika Sudah Transfer</p>
                 @endif
+                @if($transaksiItem->statusTransaksi === 'pemilik ajukan hapus')
+                    <p>Pemilik Ingin Hapus Data</p>
+                @endif
+                @if($transaksiItem->statusTransaksi === 'pencari ajukan hapus')
+                    <p>Pencari Ingin Hapus Data</p>
+                @endif
                 </td>
 
                     <td>
