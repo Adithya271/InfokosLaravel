@@ -155,7 +155,7 @@ class TransaksiController extends Controller
         $transaksi->namaBank = $request->namaBank;
         $transaksi->buktiBayar = $request->buktiBayar;
         $transaksi->noRek = $request->noRek;
-        $transaksi->statusTransaksi = $request->statusTransaksi;
+        $transaksi->statusTransaksi = 'sedang berlangsung(diperbarui)';
         $transaksi->save();
         return $this->success($transaksi, 'update data success');
     }
